@@ -186,3 +186,7 @@ a { text-underline-offset:0.15em; }
 .link-card:hover { border-color:var(--theme-primary-container); }
 .small-note { font-size:13px; line-height:1.5; color:var(--theme-on-surface-variant); }
 .home-link { font-size:14px; font-weight:600; color:var(--theme-primary); }
+
+.link-top-row { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.link-top-row .eyebrow { max-width:calc(100% - 60px); }
+.link-top-row button { width:44px; height:44px; flex:0 0 44px; display:grid; place-items:center; border:1px solid var(--theme-outline-variant); border-radius:12px; background:var(--theme-surface-container-low); color:var(--theme-on-surface); cursor:pointer; }
