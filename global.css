@@ -256,3 +256,19 @@ a { text-underline-offset:0.15em; }
   .site-brand-location { font-size: .65rem; }
   .page-title { letter-spacing: -.035em; }
 }
+
+/* Homepage and FAQ components */
+.site-nav a.current, .mobile-nav-panel a.current { color: var(--theme-primary); background: var(--theme-surface-container); }
+.home-hero { padding: clamp(1.4rem, 5vw, 3.25rem); border-radius: 20px; background: var(--theme-surface-container-low); border: 1px solid var(--theme-outline-variant); }
+.home-hero .page-title { font-size: clamp(3.5rem, 12vw, 7rem); margin-bottom: .65rem; }
+.role-line { color: var(--theme-primary); font-weight: 800; font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.55; margin: 0 0 .9rem; }
+.faq-list { display: grid; gap: .75rem; }
+.faq-item { background: var(--theme-surface-container-low); border: 1px solid var(--theme-outline-variant); border-radius: 12px; padding: 1rem 1.1rem; }
+.faq-item summary { cursor: pointer; font-weight: 800; line-height: 1.5; color: var(--theme-on-surface); }
+.faq-item p { color: var(--theme-on-surface-variant); line-height: 1.65; margin: .85rem 0 0; }
+.faq-item a { color: var(--theme-primary); font-weight: 750; }
+.page-button:focus-visible, .site-nav a:focus-visible, .mobile-nav-panel a:focus-visible { outline: 3px solid var(--theme-primary-container); outline-offset: 3px; }
+@media (max-width: 640px) {
+  .home-hero { padding: 1.35rem; }
+  .page-card { padding: 1rem; }
+}
