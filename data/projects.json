@@ -1,12 +1,21 @@
 [
   {
-    "id": "shop-management",
-    "title": "Shop Management Web App",
-    "status": "In progress",
-    "summary": "A private application concept for recording sales, purchases, activities, and inventory updates.",
-    "stack": [],
+    "id": "pomas",
+    "title": "Pomas",
+    "status": "Live and in use",
+    "summary": "A Windows desktop application for poultry farm record-keeping, batch management, feed and inventory, health records, egg production, sales, expenses, and reporting.",
+    "problem": "Helps poultry farmers organize bookkeeping and calculate business performance and profit.",
+    "contribution": "Defined the product specifications and requirements. Other implementation contributions will be documented only when verified.",
+    "stack": [
+      "Electron",
+      "React",
+      "Java",
+      "Spring Boot",
+      "SQLite"
+    ],
     "liveUrl": "",
-    "repositoryUrl": "https://github.com/ENJ-digitalhub/Sales_Management_System",
-    "image": ""
+    "repositoryUrl": "https://github.com/ENJ0Y-Labs/poultry-desktop",
+    "image": "",
+    "publicNotes": "Showcase screenshots must hide sensitive farm, customer, and financial records."
   }
 ]
