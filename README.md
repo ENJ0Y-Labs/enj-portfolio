@@ -19,7 +19,8 @@ A static multi-page personal portfolio and digital hub for ENJ. Each primary sec
 
 ## Shared files
 
-- `global.css`: design tokens, light/dark theme colours, multi-page layout, navigation, and shared styles.
+- `global.css`: design tokens, light/dark theme colours, multi-page layout, navigation, shared styles, and logo sizing.
+- `logo.png`: shared ENJ0Y logo used in page headers, footers, the link-in-bio page, and browser/home-screen icons.
 - `js/tailwind-config.js`: common Tailwind CDN configuration shared by all content pages.
 - `js/theme.js`: honours the visitor's device colour preference and provides a theme switch.
 - `js/config.js`: public business identity and contact details.
