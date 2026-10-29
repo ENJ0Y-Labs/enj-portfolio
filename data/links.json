@@ -1,8 +1,26 @@
 [
-  { "id": "github", "platform": "github", "label": "GitHub", "url": "https://github.com/ENJ0Y-Labs", "enabled": true, "group": "professional" },
-  { "id": "whatsapp-business", "platform": "whatsapp", "label": "WhatsApp Business", "url": "", "enabled": false, "group": "chat" },
-  { "id": "youtube", "platform": "youtube", "label": "YouTube", "url": "", "enabled": false, "group": "social" },
-  { "id": "facebook-page", "platform": "facebook", "label": "Facebook Page", "url": "", "enabled": false, "group": "social" },
-  { "id": "instagram", "platform": "instagram", "label": "Instagram", "url": "", "enabled": false, "group": "social" },
-  { "id": "linkedin", "platform": "linkedin", "label": "LinkedIn", "url": "", "enabled": false, "group": "professional" }
+  {
+    "id": "whatsapp-business",
+    "platform": "whatsapp",
+    "label": "WhatsApp Business",
+    "url": "https://wa.me/2349020327222?text=Hello%2C%20I%20found%20you%20through%20the%20website.",
+    "enabled": true,
+    "group": "contact"
+  },
+  {
+    "id": "whatsapp-channel",
+    "platform": "whatsapp",
+    "label": "WhatsApp Channel",
+    "url": "https://whatsapp.com/channel/0029VbDrVnx9xVJW1sRqnn3F",
+    "enabled": true,
+    "group": "community"
+  },
+  {
+    "id": "github",
+    "platform": "github",
+    "label": "GitHub",
+    "url": "https://github.com/ENJ0Y-Labs",
+    "enabled": true,
+    "group": "professional"
+  }
 ]
