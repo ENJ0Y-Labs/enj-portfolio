@@ -10,6 +10,12 @@ if (form) {
   const whatsappButton = document.querySelector("#send-whatsapp");
   const emailButton = document.querySelector("#send-email");
 
+  const queryService = new URLSearchParams(window.location.search).get("service");
+  if (queryService) {
+    const match = [...interestField.options].find((option) => option.value === queryService || option.textContent.trim() === queryService);
+    if (match) interestField.value = match.value;
+  }
+
   const whatsappNumber = String(config.whatsappNumber || "").replace(/[^0-9]/g, "");
   const businessEmail = String(config.businessEmail || "").trim();
 
