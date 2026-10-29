@@ -1,0 +1,8 @@
+[
+  { "id": "github", "platform": "github", "label": "GitHub", "url": "https://github.com/ENJ0Y-Labs", "enabled": true, "group": "professional" },
+  { "id": "whatsapp-business", "platform": "whatsapp", "label": "WhatsApp Business", "url": "", "enabled": false, "group": "chat" },
+  { "id": "youtube", "platform": "youtube", "label": "YouTube", "url": "", "enabled": false, "group": "social" },
+  { "id": "facebook-page", "platform": "facebook", "label": "Facebook Page", "url": "", "enabled": false, "group": "social" },
+  { "id": "instagram", "platform": "instagram", "label": "Instagram", "url": "", "enabled": false, "group": "social" },
+  { "id": "linkedin", "platform": "linkedin", "label": "LinkedIn", "url": "", "enabled": false, "group": "professional" }
+]

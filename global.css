@@ -1,0 +1,10 @@
+:root { color-scheme: dark; scroll-behavior: smooth; }
+html { scroll-padding-top: 5rem; }
+body { min-width: 320px; }
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid #ff7a00; outline-offset: 3px; }
+::selection { background: #ff7a00; color: #111; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
