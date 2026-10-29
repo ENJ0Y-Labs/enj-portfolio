@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "id": "thumb-sleeves",
+    "title": "Thumb Sleeves",
+    "category": "Accessories",
+    "price": null,
+    "status": "Enquire for current stock and pricing",
+    "image": "",
+    "catalogUrl": "",
+    "enquiryUrl": "https://wa.me/2349020327222?text=Hello%2C%20I%20found%20you%20through%20the%20website.%20I%27m%20enquiring%20about%20thumb%20sleeves."
+  },
+  {
+    "id": "cat-collar",
+    "title": "Cat Collar",
+    "category": "Pet Accessories",
+    "price": null,
+    "status": "Enquire for current stock and pricing",
+    "image": "",
+    "catalogUrl": "",
+    "enquiryUrl": "https://wa.me/2349020327222?text=Hello%2C%20I%20found%20you%20through%20the%20website.%20I%27m%20enquiring%20about%20cat%20collars."
+  }
+]
