@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A practical HTML and CSS lesson archive for beginners, secondary school students, and teachers.">
+<meta name="theme-color" content="#b91c1c">
+<title>Learn HTML & CSS | ENJ0Y</title>
+<link rel="stylesheet" href="global.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="js/tailwind-config.js"></script>
+</head>
+<body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen">
+<header class="site-header"><div class="site-header-inner">
+<a class="site-brand" href="index.html" aria-label="ENJ0Y home"><span class="site-brand-mark">ENJ</span><span><span class="site-brand-name">ENJ0Y</span><span class="site-brand-location">Port Harcourt, Nigeria</span></span></a>
+<nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="catalog.html">Catalog</a><a href="learn.html" aria-current="page" class="current">Learn</a><a href="cv.html">CV</a><a href="connect.html">Connect</a><details class="site-nav-more"><summary>More ▾</summary><div class="site-nav-more-panel"><a href="notes.html">Notes and Articles</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="links.html">Link in Bio</a></div></details></nav>
+<details class="mobile-nav"><summary aria-label="Open navigation menu">Menu ▾</summary><div class="mobile-nav-panel"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="catalog.html">Catalog</a><a href="learn.html" aria-current="page" class="current">Learn</a><a href="cv.html">CV</a><a href="connect.html">Connect</a><a href="notes.html">Notes and Articles</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="links.html">Link in Bio</a></div></details>
+<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme"><span class="material-symbols-outlined">contrast</span></button>
+</div></header>
+<main class="page-shell">
+<header class="page-intro"><p class="page-eyebrow">LEARNING MATERIALS</p><h1 class="page-title">Learn HTML and CSS</h1><p class="page-lead">A practical lesson archive for absolute beginners, secondary school students, and teachers. The current viewer previews the original lesson files and provides their source code.</p></header><div class="page-notice">These materials support teaching and practice. Choose a lesson from the list below. The source view displays the saved file; use a local web server or the deployed website so file requests work correctly.</div><!-- NOTES & ASSIGNMENTS SECTION (Curriculum Roadmap) -->
+<section class="px-gutter-mobile py-space-md flex flex-col gap-space-md" id="notes-curriculum">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-primary uppercase">Class Work</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">HTML & CSS Learning Archive</h2>
+<p class="font-body-sm text-body-sm text-secondary">Browse 23 HTML and CSS lessons. Select a lesson to preview the original page, read its source, and view a paired CSS file where one is available.</p>
+</div>
+<!-- Real lesson viewer: selected source and preview use the same lesson record -->
+<div class="rounded-xl overflow-hidden bg-surface-container-low shadow-lg flex flex-col" id="lesson-viewer">
+  <div class="px-space-md py-3 bg-surface-container-high flex flex-wrap items-center justify-between gap-2">
+    <div class="min-w-0">
+      <p class="font-title-sm text-sm text-on-surface font-semibold" id="preview-heading">1. Introduction to HTML</p>
+      <p class="font-code-inline text-xs text-secondary truncate" id="preview-tag-title">html/index.html</p>
+    </div>
+    <button class="px-3 py-2 rounded-lg bg-surface-container text-on-surface text-xs font-semibold" id="copy-source" type="button">Copy source</button>
+  </div>
+  <div class="flex gap-2 p-3 bg-surface-container-low border-b border-surface-container-high" role="tablist" aria-label="Lesson view">
+    <button class="viewer-tab px-4 py-2 rounded-lg bg-primary-container text-on-primary-container text-sm font-semibold" id="preview-tab" type="button" role="tab" aria-selected="true">Preview</button>
+    <button class="viewer-tab px-4 py-2 rounded-lg bg-surface-container text-secondary text-sm font-semibold" id="code-tab" type="button" role="tab" aria-selected="false">Code</button>
+    <button class="viewer-tab px-4 py-2 rounded-lg bg-surface-container text-secondary text-sm font-semibold hidden" id="css-tab" type="button" role="tab" aria-selected="false">CSS file</button>
+  </div>
+  <div id="preview-panel" class="bg-white">
+    <iframe id="lesson-frame" title="Selected lesson preview" src="html/index.html" sandbox="allow-scripts allow-forms" loading="lazy" referrerpolicy="no-referrer" style="display:block;width:100%;min-height:360px;border:0;background:#fff"></iframe>
+  </div>
+  <div id="code-panel" class="hidden bg-[#0a0e16] p-4 overflow-auto" style="max-height:520px" role="tabpanel" aria-labelledby="code-tab">
+    <p id="code-status" class="text-xs text-secondary mb-3">Loading original lesson source…</p>
+    <pre class="text-xs leading-6 text-on-surface whitespace-pre-wrap break-words"><code id="lesson-source"></code></pre>
+  </div>
+  <p id="preview-subtext" class="px-4 py-3 text-xs text-secondary">Previewing the original exercise. Switch to Code to read the saved source.</p>
+</div>
+<!-- Filter Pills for Lessons -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1" id="lesson-filters">
+<button class="px-3.5 py-1.5 rounded-full text-xs font-title-sm bg-primary-container text-on-primary-container font-semibold whitespace-nowrap active-filter-btn" onclick="filterLessons('all', this)">
+        All (23)
+      </button>
+<button class="px-3.5 py-1.5 rounded-full text-xs font-title-sm bg-surface-container text-secondary whitespace-nowrap" onclick="filterLessons('html', this)">
+        HTML (9)
+      </button>
+<button class="px-3.5 py-1.5 rounded-full text-xs font-title-sm bg-surface-container text-secondary whitespace-nowrap" onclick="filterLessons('css', this)">
+        CSS (14)
+      </button>
+</div>
+<!-- Scrollable Numbered Lessons List -->
+<div class="rounded-xl bg-surface-container-low p-2 max-h-[380px] overflow-y-auto flex flex-col gap-1.5" id="lessons-list">
+<!-- HTML Modules -->
+<button class="lesson-item html flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(1, '1. Introduction to HTML', 'HTML Document Declaration, <head>, <body> setup')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-primary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">01</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">1. Introduction to HTML</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item html flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(2, '2. Continuation of HTML', 'Semantic tags like <article>, <section>, <aside>')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-primary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">02</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">2. Continuation of HTML</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item html flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(3, '3. List in HTML', 'Ordered <ol>, Unordered <ul>, and Description Lists <dl>')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-primary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">03</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">3. List in HTML</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item html flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(4, '4. Link in HTML', 'Anchor tags <a href>, relative links, target attributes')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-primary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">04</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">4. Link in HTML</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item html flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(5, '5. Media in HTML', 'Image <img>, Audio <audio>, and Video <video> controls')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-primary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">05</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">5. Media in HTML</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item html flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(6, '6. Form in HTML', 'Form elements, text inputs, radio, checkboxes, submit')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-primary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">06</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">6. Form in HTML</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item html flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(7, '7. Table in HTML', 'Tables with <table>, <tr>, <th>, <td> tags')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-primary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">07</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">7. Table in HTML</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item html flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(8, '8. Continuation of Table in HTML', 'Colspan, rowspan, thead, tbody, and tfoot structure')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-primary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">08</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">8. Continuation of Table in HTML</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item html flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(9, '9. Page to Page Navigation in HTML', 'Multi-page website linking and document paths')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-primary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">09</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">9. Page to Page Navigation in HTML</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<!-- CSS Modules -->
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(10, '10. Introduction to CSS', 'CSS Syntax, selectors, inline vs external stylesheets')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">10</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">10. Introduction to CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(11, '11. Border in CSS', 'Border styles, widths, radiuses, and outline properties')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">11</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">11. Border in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(12, '12. Table in CSS', 'Border-collapse, table padding, zebra striping')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">12</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">12. Table in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(13, '13. List in CSS', 'List-style-type, custom counters, custom markers')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">13</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">13. List in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(14, '14. Background Image in CSS', 'Background-size, repeat, cover, and position attributes')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">14</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">14. Background Image in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(15, '15. Favicon in CSS', 'Linking browser tab icons & head icon declarations')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">15</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">15. Favicon in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(16, '16. Flexbox in CSS', 'Flex containers, direction, justify-content, align-items')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">16</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">16. Flexbox in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(17, '17. Flexbox 2 in CSS', 'Flex-grow, flex-shrink, flex-wrap, align-content')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">17</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">17. Flexbox 2 in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(18, '18. Transition in CSS', 'Transition duration, timing functions, delay states')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">18</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">18. Transition in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(19, '19. Transform in CSS', '2D transforms: scale, rotate, translate, skew')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">19</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">19. Transform in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(20, '20. Grid in CSS', 'CSS Grid template-columns, rows, gap properties')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">20</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">20. Grid in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(21, '21. Continuation of Grid in CSS', 'Grid template areas, auto-fit, minmax responsive units')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">21</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">21. Continuation of Grid in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(22, '22. Position in CSS', 'Static, relative, absolute, fixed, and sticky mechanics')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">22</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">22. Position in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+<button class="lesson-item css flex items-center justify-between p-2.5 rounded-lg bg-surface-container text-left hover:bg-surface-container-high transition-colors" onclick="selectLesson(23, '23. Navigation Bar in CSS', 'Responsive menus, hamburger toggles, flex navbars')" type="button">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="font-code-inline text-xs font-bold text-tertiary bg-surface-container w-6 h-6 rounded flex items-center justify-center shrink-0">23</span>
+<span class="font-body-sm text-body-sm text-on-surface truncate">23. Navigation Bar in CSS</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[18px]">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- HTML & CSS SHOWCASE (Interactive Visual Lab) -->
+<section class="px-gutter-mobile py-space-md flex flex-col gap-space-md" id="showcase-lab">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-primary uppercase">Practice Demo</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">HTML and CSS Showcase</h2>
+<p class="font-body-sm text-body-sm text-secondary">Live visual testbeds demonstrating layout engines and element mechanics.</p>
+</div>
+<!-- 1. Flexbox Cards Demo -->
+<div class="rounded-xl bg-surface-container-low p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-title-sm text-title-sm text-on-surface">Flexbox Cards</h3>
+<span class="font-code-inline text-[11px] text-primary bg-surface-container px-2 py-0.5 rounded">display: flex</span>
+</div>
+<div class="rounded-lg bg-surface-container p-3 flex flex-col gap-2">
+<div class="w-full py-2.5 px-3 rounded bg-secondary-container text-on-secondary-fixed text-center font-title-sm text-xs font-bold shadow-sm">
+          Header
+        </div>
+<div class="w-full py-4 px-3 rounded bg-tertiary-container text-on-tertiary-container text-center font-title-sm text-xs font-bold shadow-sm">
+          Content
+        </div>
+<div class="w-full py-2.5 px-3 rounded bg-secondary-container text-on-secondary-fixed text-center font-title-sm text-xs font-bold shadow-sm">
+          Footer
+        </div>
+</div>
+</div>
+<!-- 2. Grid Layout Demo -->
+<div class="rounded-xl bg-surface-container-low p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-title-sm text-title-sm text-on-surface">Grid Layout</h3>
+<span class="font-code-inline text-[11px] text-tertiary bg-surface-container px-2 py-0.5 rounded">grid-cols-2</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<div class="h-16 rounded-lg bg-surface-container flex items-center justify-center font-title-sm text-xs font-bold text-tertiary shadow-sm">
+          One
+        </div>
+<div class="h-16 rounded-lg bg-surface-container flex items-center justify-center font-title-sm text-xs font-bold text-tertiary shadow-sm">
+          Two
+        </div>
+<div class="h-16 rounded-lg bg-surface-container flex items-center justify-center font-title-sm text-xs font-bold text-tertiary shadow-sm">
+          Three
+        </div>
+<div class="h-16 rounded-lg bg-surface-container flex items-center justify-center font-title-sm text-xs font-bold text-tertiary shadow-sm">
+          Four
+        </div>
+</div>
+</div>
+<!-- 3. Styled List Demo -->
+<div class="rounded-xl bg-surface-container-low p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-title-sm text-title-sm text-on-surface">Styled List</h3>
+<span class="font-code-inline text-[11px] text-secondary bg-surface-container px-2 py-0.5 rounded">custom markers</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 p-3 rounded-lg bg-surface-container">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container shrink-0"></span>
+<span class="font-body-sm text-body-sm text-on-surface">Semantic HTML structure</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-surface-container">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container shrink-0"></span>
+<span class="font-body-sm text-body-sm text-on-surface">Reusable CSS classes</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-surface-container">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container shrink-0"></span>
+<span class="font-body-sm text-body-sm text-on-surface">Responsive page sections</span>
+</div>
+</div>
+</div>
+<!-- 4. Transition and Transform Demo -->
+<div class="rounded-xl bg-surface-container-low p-space-md shadow-md flex flex-col items-center gap-space-md text-center">
+<div class="flex flex-col items-center gap-0.5">
+<h3 class="font-title-sm text-title-sm text-on-surface">Transition and Transform</h3>
+<span class="font-body-sm text-body-sm text-secondary">Tap or hover the ignition node</span>
+</div>
+<!-- Interactive Kinetic Button -->
+<div class="py-4">
+<button class="w-32 h-32 rounded-full bg-gradient-to-tr from-primary-container via-primary to-primary-fixed text-on-primary-container font-title-sm text-sm font-extrabold shadow-xl shadow-lg transition-all duration-500 ease-out active:scale-125 active:rotate-12 flex flex-col items-center justify-center gap-1 group" id="transform-pill" type="button">
+<span class="material-symbols-outlined text-[28px] transition-transform duration-300 group-hover:scale-110">touch_app</span>
+<span>Hover Me</span>
+</button>
+</div>
+<span class="font-code-inline text-[11px] text-secondary">scale: 1.25 • rotate: 12deg • duration: 500ms</span>
+</div>
+<!-- 5. Table Practice Demo -->
+<div class="rounded-xl bg-surface-container-low p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-title-sm text-title-sm text-on-surface">Table Practice</h3>
+<span class="font-code-inline text-[11px] text-primary bg-surface-container px-2 py-0.5 rounded">&lt;table&gt;</span>
+</div>
+<div class="overflow-x-auto rounded-lg">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container-high text-on-surface">
+<th class="p-3 font-title-sm text-xs font-semibold">Topic</th>
+<th class="p-3 font-title-sm text-xs font-semibold">Status</th>
+<th class="p-3 font-title-sm text-xs font-semibold">Level</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-transparent">
+<tr class="bg-surface-container">
+<td class="p-3 font-medium text-on-surface">HTML</td>
+<td class="p-3 text-tertiary">Completed</td>
+<td class="p-3">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-tertiary-container text-on-tertiary-container">Strong</span>
+</td>
+</tr>
+<tr class="bg-surface-container-high">
+<td class="p-3 font-medium text-on-surface">CSS Layout</td>
+<td class="p-3 text-primary">Ongoing</td>
+<td class="p-3">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-primary-container text-on-primary-container">Improving</span>
+</td>
+</tr>
+<tr class="bg-surface-container">
+<td class="p-3 font-medium text-on-surface">Projects</td>
+<td class="p-3 text-secondary">Active</td>
+<td class="p-3">
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-secondary-container text-on-secondary">Growing</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 6. Form Practice Demo -->
+<div class="rounded-xl bg-surface-container-low p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-title-sm text-title-sm text-on-surface">Form Practice</h3>
+<span class="font-code-inline text-[11px] text-primary bg-surface-container px-2 py-0.5 rounded">&lt;form&gt;</span>
+</div>
+<form class="flex flex-col gap-3.5" onsubmit="event.preventDefault(); document.getElementById('form-feedback').classList.remove('hidden');">
+<!-- Field 1: First Name -->
+<div class="flex flex-col gap-1">
+<label class="font-title-sm text-xs text-secondary" for="fname-input">First Name</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg bg-surface-container text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-high transition-colors" id="fname-input" placeholder="Enter name" type="text" value="Noble"/>
+</div>
+<!-- Field 2: Favourite Topic (Chips selection) -->
+<div class="flex flex-col gap-1.5">
+<label class="font-title-sm text-xs text-secondary">Favourite Topic</label>
+<div class="grid grid-cols-4 gap-1.5" id="topic-chips">
+<button class="topic-chip py-1.5 text-center rounded text-xs font-title-sm font-semibold bg-primary-container text-on-primary-container" onclick="selectTopic(this)" type="button">HTML</button>
+<button class="topic-chip py-1.5 text-center rounded text-xs font-title-sm font-semibold bg-surface-container text-secondary" onclick="selectTopic(this)" type="button">CSS</button>
+<button class="topic-chip py-1.5 text-center rounded text-xs font-title-sm font-semibold bg-surface-container text-secondary" onclick="selectTopic(this)" type="button">Flexbox</button>
+<button class="topic-chip py-1.5 text-center rounded text-xs font-title-sm font-semibold bg-surface-container text-secondary" onclick="selectTopic(this)" type="button">Grid</button>
+</div>
+</div>
+<!-- Field 3: Learning Note -->
+<div class="flex flex-col gap-1">
+<label class="font-title-sm text-xs text-secondary" for="note-input">Learning Note</label>
+<textarea class="w-full px-3.5 py-2.5 rounded-lg bg-surface-container text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-high transition-colors resize-none" id="note-input" placeholder="I am learning how to build better layouts..." rows="3">I am learning how to build better layouts...</textarea>
+</div>
+<!-- Buttons -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="py-2.5 rounded-lg bg-primary-container text-on-primary-container font-title-sm text-xs font-bold shadow-md active:scale-95 transition-transform" type="submit">
+            Submit
+          </button>
+<button class="py-2.5 rounded-lg bg-surface-container text-on-surface font-title-sm text-xs font-semibold active:scale-95 transition-transform" onclick="document.getElementById('form-feedback').classList.add('hidden');" type="reset">
+            Reset
+          </button>
+</div>
+<!-- Feedback alert -->
+<div class="hidden p-2.5 rounded bg-surface-container text-tertiary font-body-sm text-xs text-center flex items-center justify-center gap-1.5" id="form-feedback">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Practice form recorded locally!</span>
+</div>
+</form>
+</div>
+<!-- 7. Media Practice Demo -->
+<div class="rounded-xl bg-surface-container-low p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex flex-col gap-0.5">
+<h3 class="font-title-sm text-title-sm text-on-surface">Media Practice</h3>
+<p class="font-body-sm text-body-sm text-secondary">
+          This section brings in image, video, and audio elements to reflect the media lessons from the HTML folder.
+        </p>
+</div>
+<!-- Media Visual Card 1: Anime/Sci-fi Digital Art -->
+<div class="relative rounded-lg overflow-hidden h-40 bg-surface-container-high">
+<div class="w-full h-full bg-surface-container-high flex flex-col items-center justify-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-4xl">image</span><span class="text-sm">HTML image element example</span></div>
+<div class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-surface-container-lowest backdrop-blur-sm text-[10px] font-label-caps text-on-surface">
+          Image element demo
+        </div>
+</div>
+<!-- Media Visual Card 2: Simulated Video Player -->
+<div class="relative rounded-lg overflow-hidden h-44 bg-surface-container-lowest flex flex-col justify-between">
+<div class="absolute inset-0 bg-surface-container-high flex items-center justify-center text-on-surface-variant text-sm">HTML video element example</div>
+<div class="relative z-10 p-2 flex justify-between items-center">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-[10px] font-label-caps text-primary">VIDEO DEMO</span>
+<span class="text-xs font-code-inline text-on-surface bg-surface-container-lowest px-2 py-0.5 rounded">Sample</span>
+</div>
+<!-- Video Controls Bar -->
+<div class="relative z-10 p-2.5 bg-surface-container-lowest backdrop-blur-md flex items-center justify-between gap-3">
+<span class="text-xs font-semibold text-on-surface">Video demo</span>
+<span class="flex-1 text-xs text-secondary">Playback is not available until a video file is added.</span>
+
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<footer class="page-footer"><div class="page-footer-inner"><div><a class="page-footer-brand" href="index.html">ENJ0Y</a><p class="page-footer-note">ENJ · Port Harcourt, Nigeria · Limited availability</p></div><nav class="page-footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="catalog.html">Catalog</a><a href="learn.html">Learn</a><a href="cv.html">CV</a><a href="connect.html">Connect</a><a href="notes.html">Notes and Articles</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="links.html">Link in Bio</a></nav><p class="page-footer-note">© 2026 ENJ0Y. Upfront payment is required for accepted design and document-formatting work.</p></div></footer>
+<script>
+  const lessonFiles = {
+    1:{html:'html/index.html',notes:'HTML document structure and the relationship between head and body.'},
+    2:{html:'html/blockd.html',notes:'Semantic page sections and block-level structure.'},
+    3:{html:'html/list.html',notes:'Ordered, unordered, and description lists.'},
+    4:{html:'html/link.html',notes:'Anchor elements and page navigation.'},
+    5:{html:'html/media.html',notes:'HTML media elements.'},
+    6:{html:'html/form.html',notes:'Form controls and input elements.'},
+    7:{html:'html/table.html',notes:'Rows, headings, and data cells.'},
+    8:{html:'html/table2.html',notes:'More table structure and spanning cells.'},
+    9:{html:'html/p2p.html',notes:'Page-to-page navigation and links.'},
+    10:{html:'css/index (1).html',notes:'CSS fundamentals and introductory styling.'},
+    11:{html:'css/border.html',css:'css/border.css',notes:'Border styles, widths, radii, and outlines.'},
+    12:{html:'css/table (1).html',css:'css/table.css',notes:'Table styling and spacing.'},
+    13:{html:'css/list (1).html',css:'css/list.css',notes:'List markers and list styling.'},
+    14:{html:'css/bgimage.html',css:'css/bgimage.css',notes:'Background image sizing and positioning.'},
+    15:{html:'css/favicon.html',css:'css/favicon.css',notes:'Browser tab icons and page metadata.'},
+    16:{html:'css/flexbox.html',css:'css/flexbox.css',notes:'Flex containers and alignment.'},
+    17:{html:'css/flexbox2.html',css:'css/flexbox2.css',notes:'Flex wrapping, growth, and spacing.'},
+    18:{html:'css/transition.html',notes:'CSS transition timing and states.'},
+    19:{html:'css/transform.html',notes:'Two-dimensional transforms.'},
+    20:{html:'css/grid.html',css:'css/grid.css',notes:'Grid tracks and gaps.'},
+    21:{html:'css/grid2.html',css:'css/grid2.css',notes:'More grid layouts and responsive sizing.'},
+    22:{html:'css/position.html',notes:'Static, relative, absolute, fixed, and sticky positioning.'},
+    23:{html:'css/navbar.html',notes:'Navigation layout and responsive menu structure.'}
+  };
+  let selectedLesson = lessonFiles[1];
+  let selectedSourcePath = selectedLesson.html;
+  const previewPanel = document.getElementById('preview-panel');
+  const codePanel = document.getElementById('code-panel');
+  const previewTab = document.getElementById('preview-tab');
+  const codeTab = document.getElementById('code-tab');
+  const cssTab = document.getElementById('css-tab');
+  const sourceCode = document.getElementById('lesson-source');
+  const codeStatus = document.getElementById('code-status');
+  const lessonFrame = document.getElementById('lesson-frame');
+
+  function setViewerTab(tab) {
+    const isPreview = tab === 'preview';
+    const isCss = tab === 'css';
+    previewPanel.classList.toggle('hidden', !isPreview);
+    codePanel.classList.toggle('hidden', isPreview);
+    [previewTab, codeTab, cssTab].forEach(button => {
+      const active = button.id === (isPreview ? 'preview-tab' : isCss ? 'css-tab' : 'code-tab');
+      button.classList.toggle('bg-primary-container', active);
+      button.classList.toggle('text-on-primary-container', active);
+      button.classList.toggle('bg-surface-container', !active);
+      button.classList.toggle('text-secondary', !active);
+      button.setAttribute('aria-selected', String(active));
+    });
+    selectedSourcePath = isCss && selectedLesson.css ? selectedLesson.css : selectedLesson.html;
+    loadLessonSource(selectedSourcePath);
+  }
+
+  async function loadLessonSource(path) {
+    codeStatus.textContent = 'Loading ' + path + '…';
+    sourceCode.textContent = '';
+    try {
+      const response = await fetch(path, { cache: 'no-cache' });
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      sourceCode.textContent = await response.text();
+      codeStatus.textContent = path + ' · original repository file';
+    } catch (error) {
+      codeStatus.textContent = 'Could not load source. Open this lesson through the deployed site or a local web server.';
+      sourceCode.textContent = 'Source unavailable: ' + error.message;
+    }
+  }
+
+  async function selectLesson(id, title, desc) {
+    const lesson = lessonFiles[id];
+    if (!lesson) return;
+    selectedLesson = lesson;
+    selectedSourcePath = lesson.html;
+    document.getElementById('preview-heading').textContent = title;
+    document.getElementById('preview-tag-title').textContent = lesson.html;
+    document.getElementById('preview-subtext').textContent = desc + ' ' + lesson.notes;
+    lessonFrame.src = lesson.html;
+    cssTab.classList.toggle('hidden', !lesson.css);
+    setViewerTab('preview');
+    document.querySelectorAll('.lesson-item').forEach(item => item.classList.remove('ring-2','ring-primary'));
+    const chosen = document.querySelector('.lesson-item[onclick^="selectLesson(' + id + ',"]');
+    if (chosen) chosen.classList.add('ring-2','ring-primary');
+  }
+
+  previewTab.addEventListener('click', () => setViewerTab('preview'));
+  codeTab.addEventListener('click', () => setViewerTab('code'));
+  cssTab.addEventListener('click', () => setViewerTab('css'));
+  document.getElementById('copy-source').addEventListener('click', async () => {
+    if (!sourceCode.textContent.trim()) {
+      await loadLessonSource(selectedSourcePath);
+    }
+    try {
+      await navigator.clipboard.writeText(sourceCode.textContent);
+      document.getElementById('copy-source').textContent = 'Copied';
+      setTimeout(() => document.getElementById('copy-source').textContent = 'Copy source', 1400);
+    } catch {
+      codeStatus.textContent = 'Copy was blocked by the browser. Select the source text and copy it manually.';
+    }
+  });
+  loadLessonSource(selectedSourcePath);
+
+  function filterLessons(type, btn) {
+    const buttons = document.querySelectorAll('#lesson-filters button');
+    buttons.forEach(b => {
+      b.classList.remove('bg-primary-container', 'text-on-primary-container');
+      b.classList.add('bg-surface-container', 'text-secondary');
+    });
+    btn.classList.remove('bg-surface-container', 'text-secondary');
+    btn.classList.add('bg-primary-container', 'text-on-primary-container');
+
+    const items = document.querySelectorAll('.lesson-item');
+    items.forEach(item => {
+      if (type === 'all') {
+        item.style.display = 'flex';
+      } else if (item.classList.contains(type)) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  function selectTopic(clickedBtn) {
+    const chips = document.querySelectorAll('.topic-chip');
+    chips.forEach(c => {
+      c.classList.remove('bg-primary-container', 'text-on-primary-container');
+      c.classList.add('bg-surface-container', 'text-secondary');
+    });
+    clickedBtn.classList.remove('bg-surface-container', 'text-secondary');
+    clickedBtn.classList.add('bg-primary-container', 'text-on-primary-container');
+  }
+</script>
+<script type="module" src="js/theme.js"></script>
+</body>
+</html>
