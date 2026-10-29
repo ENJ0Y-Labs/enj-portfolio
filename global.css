@@ -272,3 +272,36 @@ a { text-underline-offset:0.15em; }
   .home-hero { padding: 1.35rem; }
   .page-card { padding: 1rem; }
 }
+
+
+/* Shared ENJ0Y logo placements */
+.site-brand-logo {
+  display: block;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  object-fit: contain;
+}
+.page-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  text-decoration: none;
+}
+.page-footer-brand-logo {
+  display: block;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  object-fit: contain;
+}
+.link-hub-brand {
+  background: transparent;
+  overflow: hidden;
+}
+.link-hub-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
