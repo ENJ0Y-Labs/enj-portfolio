@@ -23,7 +23,7 @@ if (form) {
       status.textContent = "Complete the required fields before continuing.";
       return null;
     }
-    return `Hello, my name is ${name}.\nI am interested in: ${interest}.\nMessage: ${message}\nBudget: ${budget}\nSent from my website.`;
+    return `Hello, I found you through the website.\nMy name is ${name}.\nI am interested in: ${interest}.\nMessage: ${message}\nBudget: ${budget}.`
   }
 
   whatsappButton.addEventListener("click", () => {
