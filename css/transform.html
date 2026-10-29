@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>20. Transform in CSS</title>
+    <style>
+        html{
+            background-color: black;
+        }
+        .box{
+            height: 200px;
+            width: 200px;
+            margin: 20px auto;
+        }
+        .square1{
+            background-color: aqua;
+            transition: 2000ms all ease;
+        }
+        .square1:hover{
+            transform: rotate(360deg);
+        }
+        .square2{
+            background-color: red;
+            transition: 2000ms all ease;
+        }
+        .square2:hover{
+            transform: scale(.5);
+        }
+        .square3{
+            background-color: blue;
+            transition: 2000ms all ease;
+        }
+        .square3:hover{
+            transform: skew(360deg);
+        }
+        .square4{
+            background-color: green;
+            transition: 2000ms all ease;
+        }
+        .square4:hover{
+            transform: translate(400px);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    rotate
+        rotatex
+        rotatey
+    scale
+        scalex
+        scaley
+    skew
+        skewx
+        skewy
+    translate
+        translatex
+        translatey
+    -->
+        <div class="box square1"></div>
+        <div class="box square2"></div>
+        <div class="box square3"></div>
+        <div class="box square4"></div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!--
+Assignment
+English meaning of CSS
+
+Inline CSS
+Internal CSS (often) (same file)
+External CSS (use different file)
+
+MODE: call and response
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>10. Introduction to CSS</title>
+
+        <style>
+            h1{
+                color : red;
+                font-size : 50px;
+                text-decoration: underline;
+                letter-spacing: 5px;
+                font-family: 'Times New Roman', Times, serif;
+                text-align: center;
+                font-weight: lighter;
+            }
+            /*#secondtxt{
+                color : blue;
+                font-size: 15px;
+            }*/
+            h1{
+                color: green;
+            }
+            .text{
+                color : tomato;
+                font-size : 45px;
+                text-transform: uppercase;
+                text-decoration: underline;
+                letter-spacing: 5px;
+                font-family: 'Times New Roman', Times, serif;
+                text-align: center;
+                font-weight: lighter;
+            }
+        </style>
+        <!--
+        Where all css code are written
+        "h1{}" - element selector
+        "color:" -  CSS property
+        "red" - value
+        "color: red" = CSS rule
+        "#secondtxt{}" - id selector (not addvisable; too strict)
+
+        Class: a class is an attribute that is used to group on eor more elements together.
+        To access a class you make use of period.(.) in front of the class.
+        We can have more than one class in am element.
+
+        ".text{}" - class selector
+        -->
+    </head>
+    <body>
+        <h1 class="text">I am working with CSS</h1>
+        <h1 id="secondtxt" class="text">I am working with CSS</h1>
+        <h1 class="text">I am working with CSS</h1>
+        <p class="text">This is a paragraph</p>
+        <h6 class="text">This is heading six</h6>
+    </body>
+</html>

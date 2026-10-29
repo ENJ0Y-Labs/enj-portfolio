@@ -1,0 +1,27 @@
+.text{
+    border: 1px solid black;
+    /*padding: 20px 30px 10px 5px;*/
+    /* padding: 30px 20px; */
+    /* padding: 30px 20px 10px; */
+    padding-top: 30px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    /* 
+    padding: All
+    padding: Top Bottom 
+    padding: Right Left
+    padding: Top Right/left Buttom
+    padding: Top Right Bottom Left
+    */
+}
+.paragraph1{
+    background-color: green;
+    color: white;
+    margin-bottom: 100px;
+}
+.paragraph2{
+    margin-left: 50px;
+    width: 200px;
+    box-sizing: border-box;
+}

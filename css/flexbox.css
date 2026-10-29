@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+div.parent{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    border: 1px solid black;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+div.parent .child{
+    display: flex;
+    height: 200px;
+    width: 200px;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+}

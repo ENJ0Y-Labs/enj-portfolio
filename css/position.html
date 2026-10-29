@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>24. Position in CSS</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            background-color: black;
+            color: white;
+        }
+        body{
+            height: 300vh;
+        }
+        .box{
+            width:100px;
+            height: 100px;
+            margin: 20px;
+        }
+        .p1{
+            background-color: red;
+            position: fixed;
+            right: 50%;
+            top: 70px;
+        }
+        .p2{
+            background-color: blue;
+        }
+        .outer{
+            width: 400px;
+            height: 400px;
+            border: 2px solid white;
+            position: relative;
+        }
+        .p3{
+            position: absolute;
+            background-color: yellow;
+            color: black;
+            /* left: 0; */
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    We have 5c positions in CSS:
+    1. Static
+    2. Relative
+    3. Absolute
+    4. Fixed
+    5. Sticky
+    -->
+    <div class="box p1">One</div>
+    <div class="box p2">Two</div>
+    <div class="outer">
+        <div class="box p3">Three</div>
+    </div>
+</body>
+</html>

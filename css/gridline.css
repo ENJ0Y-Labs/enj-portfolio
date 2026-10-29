@@ -1,0 +1,47 @@
+html{
+    background-color: black;
+    color: white;
+}
+main.parent-container{
+    border: 3px solid white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    gap: 10px;
+}
+.child{
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 30px;
+    background-color: blanchedalmond;
+}
+
+.child:nth-child(odd){
+    background-color: chocolate;
+    color: white;
+}
+
+.b1{
+    /* grid-column-start: 1;
+    grid-column-end: 4; */
+    /* grid-column: 1 / 4; */
+}
+
+.b2{
+    /* grid-column-start: 1;
+    grid-column-end: 4; */
+    /* grid-column: 1 / 3; */
+    /* grid-row: 2 / 4; */
+}
+
+.b5{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+.b7{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}

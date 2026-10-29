@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>19. Transition in CSS</title>
+    <style>
+        .box{
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            border: 10px solid black;
+            border-top: 10px solid red;
+            /* background: red; */
+            transition: 2000ms all ease-in-out;
+            cursor: pointer;
+        }
+        .box:hover{
+            /* background: blue; */
+            /* width: 400px; */
+            transform: rotate(3600gdeg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

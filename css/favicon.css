@@ -1,0 +1,20 @@
+/* Only one needed either the link is in HTML of CSS file, not both. I have removed the one in CSS file and kept the one in HTML file.
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double+Ink:wght@100..900&display=swap'); */
+
+* {
+  font-family: "Lobster Two", cursive;
+}
+
+.bit {
+  font-family: "Bitcount Grid Double Ink";
+}
+
+.icon {
+  /* 1rem=16px */
+  font-size: 3rem;
+}
+
+.icon:hover {
+  color: blue;
+  cursor: pointer;
+}

@@ -1,0 +1,27 @@
+html{
+    background-color: black;
+    color: white;
+}
+.parent-container{
+    width: 700px;
+    /* height: 500px; */
+    border: 3px solid white;
+    display: grid;
+    /* grid-template-columns: repeat(3, 200px); */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2,minmax(200px, auto));
+    gap: 10px;
+}
+.child{
+    padding: 30px;
+    background-color: teal;
+    color: black;
+    text-align: center;
+    /* overflow-y: scroll; */
+}
+.child:nth-child(even){
+    padding: 30px;
+    background-color: #777;
+    color: black;
+    text-align: center;
+}

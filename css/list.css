@@ -1,0 +1,9 @@
+ul{
+     /* list-style-type: decimal-leading-zero; */
+     list-style-position: inside;
+     list-style-image: url(../Media/Image/20260305_110523.png);
+}
+li{
+    padding: 20px;
+    margin: 15px;
+}

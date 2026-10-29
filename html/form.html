@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>6. Forms in HTML</title>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label>First Name</label>
+                <input type="text" placeholder="Noble" required>
+            </div>
+            <div>
+                <label for = "lname">Last Name</label>
+                <input type="text" placeholder="Ekwere" id="lname">
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" placeholder="words only">
+            </div>
+            <div>
+                <label>Quantity</label>
+                <input type="number" min="1" max="10">
+            </div>
+            <div>
+                <label>Notes</label>
+                <input type="text" value="This is a note" readonly>
+            </div>
+            <div>
+                <label>Gender:</label>
+                <input type="radio" name="gender">
+                <label>Male</label>
+                <input type="radio" name="gender">
+                <label>Female</label>
+                <input type="radio" name="gender">
+                <label>Unicorn</label>
+            </div>
+            <div>
+                <label>Subcribe</label>
+                <input type="checkbox">
+            </div>
+            <div>
+                <label>Payment</label>
+                <select>
+                    <option>Master Card</option>
+                    <option>Visa Card</option>
+                    <option>Verve Card</option>
+                </select>
+            </div>
+            <div>
+                <label>Description</label><br>
+                <textarea rows="5" cols="10"></textarea>
+            </div>
+            
+            <div>
+                <input type="submit" value="Send">
+                <input type="reset" value="Restart">
+            </div>
+            <!--
+            Semantic tags are tags that give meaning to their content.
+            Eg. main, header, footer
+
+            ID - a id is an attribute that uniquely identifies an element.
+            To be able to access an id you must make use of hash (#) sign in front of the id.
+            -->
+        </form>
+    </body>
+</html>

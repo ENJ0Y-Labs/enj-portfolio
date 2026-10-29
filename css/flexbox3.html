@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>18. Continuation of Flexbox</title>
+    <style>
+        .parent-container{
+            display: flex;
+            /* flex-direction: row; */
+            flex-wrap: wrap;
+            gap: 10px;
+            height: 500px;
+        }
+        section.child{
+            height: 100px;
+            width: 300px;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            background-color: chocolate;
+        }
+        .six{
+            align-self: end;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent-container">
+        <section class="child">One</section>
+        <section class="child">Two</section>
+        <section class="child">Three</section>
+        <section class="child">Four</section>
+        <section class="child">Five</section>
+        <section class="child six">Six</section>
+    </div>
+</body>
+</html>
