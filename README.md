@@ -1,57 +1,54 @@
 # ENJ0Y Portfolio
 
-A static personal portfolio and digital hub for ENJ. It combines professional work, the Pomas project, available design and Microsoft Office services, a product enquiry catalogue, verified public links, and HTML/CSS learning materials.
+A static multi-page personal portfolio and digital hub for ENJ. Each primary section has its own HTML page and ordinary links connect the site.
 
-## Public identity
+## Pages
 
-- Display name: ENJ
-- Brand: ENJ0Y (the zero is intentional)
-- Location: Port Harcourt, Nigeria
-- Available services in this release: graphic design and Microsoft Office document/spreadsheet/presentation formatting
-- Planned service: web development (not advertised as currently bookable)
-- Payment terms: upfront payment after the scope and quote have been agreed
-- CV: available on request, not a public download
+- `index.html`: concise homepage and links to the main destinations.
+- `about.html`: background, skills, current learning, and availability.
+- `projects.html`: public project case studies (currently featuring Pomas).
+- `services.html`: graphic design and Microsoft Office formatting; web development remains marked as planned.
+- `catalog.html`: thumb sleeves and cat collar enquiry cards.
+- `learn.html`: the existing HTML/CSS lesson archive, live preview, and source viewer.
+- `cv.html`: request-only CV page; no public CV download.
+- `connect.html`: verified public social/professional links.
+- `links.html`: standalone link-in-bio page.
+- `notes.html`: index for technical notes and articles.
+- `faq.html`: answers to common questions.
+- `contact.html`: WhatsApp/email enquiry form and direct contact links.
 
-## Technology and structure
+## Shared files
 
-- HTML, Tailwind CDN utilities, shared CSS theme tokens, and vanilla JavaScript modules
-- No backend, database, user accounts, or online payment flow
-- `js/config.js`: public identity and business contact settings
-- `js/contact.js`: enquiry validation and WhatsApp/email handoff
-- `js/theme.js`: light/dark theme toggle; first load follows device preference
-- `data/projects.json`: public project information
-- `data/products.json`: product enquiry entries
-- `data/links.json`: verified public account links
-- `links.html`: standalone link-in-bio page
-- `html/` and `css/`: existing practice lessons used by the learning archive
+- `global.css`: design tokens, light/dark theme colours, multi-page layout, navigation, and shared styles.
+- `js/tailwind-config.js`: common Tailwind CDN configuration shared by all content pages.
+- `js/theme.js`: honours the visitor's device colour preference and provides a theme switch.
+- `js/config.js`: public business identity and contact details.
+- `js/contact.js`: validates contact input and opens a WhatsApp/email draft; it can preselect an enquiry from a URL query.
+- `data/projects.json`, `data/products.json`, and `data/links.json`: starter data records for future rendering or maintenance.
 
 ## Run locally
 
-Run from the repository root:
+From the repository root, run:
 
 ```sh
 python -m http.server 8000
 ```
 
-Then open `http://localhost:8000`. Do not open the file directly with `file://`, because JavaScript modules and lesson-source requests require a local web server.
+Open `http://localhost:8000`. Do not open files directly with `file://`; JavaScript modules and lesson-source requests need a web server.
 
-## Contact and privacy
+## Privacy and catalogue notes
 
-The static site uses the business WhatsApp number and email configured in `js/config.js`. These values are public in client-side files even if the email address is shown only through a button in the interface. Do not put credentials, API keys, customer information, or other secrets in this repository.
+Contact details in a static site are public in its source files. Do not store credentials, API keys, customer records, or private information here. The contact form does not store submissions. It opens the visitor's chosen app with a pre-filled draft, which the visitor must review and send.
 
-The enquiry form does not store submissions. WhatsApp opens a pre-filled draft that the visitor must review and send. Email opens the visitor's email application. No contact is sent automatically by the page.
+The catalog lists thumb sleeves and cat collars without invented prices or stock. The official WhatsApp Business catalogue/item URLs and product photos still need to be added. Until then, the cards create WhatsApp enquiry drafts rather than claiming automatic catalogue sync.
 
-## Catalogue limitations
+## Pre-launch checks
 
-The website currently shows Thumb Sleeves and Cat Collar as product enquiry cards. Stock and pricing are confirmed through WhatsApp. The official WhatsApp Business catalogue URL and product-specific catalogue item URLs have not been supplied, so these cards open a pre-filled business enquiry instead of claiming to deep-link to a live catalogue item. Product photographs still need to be added to the repository.
-
-## Before publishing
-
-1. Confirm every service description and the upfront-payment wording.
-2. Replace placeholder product icons with the supplied product photographs.
-3. Add product-specific WhatsApp catalogue links after confirming the official catalogue.
-4. Capture Pomas screenshots with all farm, customer, and financial data hidden.
-5. Review all remaining media examples and ensure you have the right to publish them.
-6. Verify the 23 lesson mappings, embedded assets, and their licensing/ownership.
-7. Test contact links and both theme modes at mobile and desktop sizes.
-8. Deploy to Netlify over HTTPS and verify the production site on a phone.
+1. Test links across all pages and use browser Back/Forward.
+2. Verify the theme switch in light and dark modes.
+3. Test the form, WhatsApp drafts, and email draft on desktop and mobile.
+4. Test the Learn page's 23 lesson paths and the separate CSS file tab.
+5. Add product photos and official WhatsApp catalogue links.
+6. Capture Pomas screenshots with private farm, customer, and financial details hidden.
+7. Check layout widths at 360px, 768px, and 1280px, and run an accessibility/Lighthouse review.
+8. Verify Netlify is configured to publish this repository root.
