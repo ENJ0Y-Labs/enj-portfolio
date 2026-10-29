@@ -51,6 +51,7 @@
   --theme-surface-variant: #31353e;
 }
 html { scroll-padding-top: 5rem; }
+*, *::before, *::after { animation: none !important; transition: none !important; }
 body { min-width: 320px; background: var(--theme-surface); color: var(--theme-on-surface); }
 button, input, select, textarea { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
