@@ -464,3 +464,62 @@ a { text-underline-offset:0.15em; }
     transform: none;
   }
 }
+
+
+
+/* ===== ENJ0Y premium polish (append to the end of global.css) ===== */
+
+/* Page transitions: header stays put, content crossfades with 6px of lift. */
+.site-header { view-transition-name: site-header; }
+::view-transition-old(site-header) { display: none; }
+::view-transition-new(site-header) { animation: none; }
+::view-transition-new(root) { animation: enj0y-page-in 260ms ease both, enj0y-page-lift 260ms ease both; }
+@keyframes enj0y-page-lift { from { transform: translateY(6px); } to { transform: none; } }
+
+/* Browsers without cross-document view transitions (e.g. Firefox): simple fade on load. */
+@supports not (view-transition-name: none) {
+  body { animation: enj0y-page-in 240ms ease both; }
+}
+
+/* Hero and page intro: CSS-only entrance, so there is no hide-then-show flash. */
+.home-hero, .page-intro { animation: enj0y-rise 460ms cubic-bezier(.2,.7,.2,1) both; }
+@keyframes enj0y-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* Shorter travel on phones. */
+@media (max-width: 640px) { .motion-ready [data-reveal] { transform: translateY(10px); } }
+
+/* Nav: underline indicator for the current page and on hover. */
+.site-nav > a { position: relative; }
+.site-nav > a::after {
+  content: ""; position: absolute; left: .55rem; right: .55rem; bottom: .2rem; height: 2px;
+  border-radius: 2px; background: var(--theme-primary);
+  transform: scaleX(0); transform-origin: left; transition: transform 200ms ease;
+}
+.site-nav > a:hover::after, .site-nav > a.current::after { transform: scaleX(1); }
+
+/* Form fields: clear focus feedback. */
+.page-form input, .page-form textarea, .page-form select { transition: border-color 160ms ease, box-shadow 160ms ease; }
+.page-form input:focus, .page-form textarea:focus, .page-form select:focus {
+  border-color: var(--theme-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--theme-primary) 25%, transparent);
+}
+
+/* Busy and disabled buttons (prevents duplicate submissions visually). */
+.page-button:disabled, .page-button[aria-busy="true"] { opacity: .65; cursor: progress; transform: none; }
+.page-button[aria-busy="true"]::after {
+  content: ""; width: 1em; height: 1em; border: 2px solid currentColor; border-right-color: transparent;
+  border-radius: 50%; animation: enj0y-spin 700ms linear infinite;
+}
+@keyframes enj0y-spin { to { transform: rotate(360deg); } }
+
+/* Lesson source loading. */
+#code-panel[aria-busy="true"] #lesson-source { opacity: .4; transition: opacity 160ms ease; }
+
+/* Theme toggle: the icon turns when pressed. */
+.theme-toggle .material-symbols-outlined { transition: transform 260ms ease; }
+.theme-toggle:active .material-symbols-outlined { transform: rotate(180deg); }
+
+/* Touch screens have no real hover: don't leave cards or buttons stuck raised. */
+@media (hover: none) {
+  .page-button:hover, .link-card:hover { transform: none; }
+  .page-card:hover { box-shadow: none; border-color: var(--theme-outline-variant); }
+}
