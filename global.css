@@ -523,3 +523,46 @@ a { text-underline-offset:0.15em; }
   .page-button:hover, .link-card:hover { transform: none; }
   .page-card:hover { box-shadow: none; border-color: var(--theme-outline-variant); }
 }
+
+
+/* ENJ0Y branded initial loader */
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--theme-surface);
+  color: var(--theme-on-surface);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 420ms ease, visibility 420ms ease;
+}
+.site-loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.site-loader-inner { display: grid; justify-items: center; gap: 20px; width: min(100%, 320px); text-align: center; }
+.site-loader-mark {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border: 1px solid var(--theme-outline-variant);
+  border-radius: 22px;
+  background: var(--theme-surface-container-low);
+  box-shadow: 0 18px 55px #0002;
+  animation: enj0y-loader-float 2s ease-in-out infinite;
+}
+.site-loader-mark img { display: block; width: 54px; height: 54px; object-fit: contain; }
+.site-loader-brand { margin: 0; font-size: 1.25rem; font-weight: 850; letter-spacing: .16em; }
+.site-loader-caption { margin: -12px 0 0; color: var(--theme-on-surface-variant); font-size: .88rem; }
+.site-loader-track { width: min(220px, 75vw); height: 3px; overflow: hidden; border-radius: 999px; background: var(--theme-surface-container-high); }
+.site-loader-progress { width: 38%; height: 100%; border-radius: inherit; background: var(--theme-primary); animation: enj0y-loader-progress 1.25s ease-in-out infinite; }
+.site-loader-demo-note { display: none; margin: -8px 0 0; color: var(--theme-on-surface-variant); font-size: .72rem; }
+html[data-loader-demo="true"] .site-loader-demo-note { display: block; }
+@keyframes enj0y-loader-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes enj0y-loader-progress { 0% { transform: translateX(-120%); } 100% { transform: translateX(360%); } }
+html.site-loading, html.site-loading body { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .site-loader, .site-loader-mark, .site-loader-progress { animation: none !important; transition: none !important; }
+  .site-loader-progress { width: 100%; }
+}
