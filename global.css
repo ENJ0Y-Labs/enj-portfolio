@@ -568,3 +568,31 @@ html.site-loading, html.site-loading body { overflow: hidden; }
   .site-loader, .site-loader-mark, .site-loader-progress { animation: none !important; transition: none !important; }
   .site-loader-progress { width: 100%; }
 }
+
+
+/* ENJ0Y honeycomb theme flip: alternating hex faces reveal the destination theme. */
+.theme-honeycomb {
+  --tile-front: #0f131c; --tile-back: #fff9fa; --flip-total: 1000ms;
+  position: fixed; inset: 0; z-index: 10000; overflow: hidden;
+  pointer-events: none; perspective: 1000px; background: var(--tile-front);
+  opacity: 1; transition: opacity 240ms ease;
+}
+.theme-honeycomb.is-clearing { opacity: 0; }
+.theme-hex { position: absolute; width: 76px; height: 68px; perspective: 700px; transform-style: preserve-3d; }
+.theme-hex-inner { position: absolute; inset: 0; display: block; transform-style: preserve-3d; }
+.theme-honeycomb.is-flipping .theme-hex-inner {
+  animation: enj0y-hex-flip 520ms cubic-bezier(.5,.05,.2,1) var(--flip-delay) both;
+}
+.theme-hex-face {
+  position: absolute; inset: 0; display: block;
+  clip-path: polygon(25% 2%,75% 2%,100% 50%,75% 98%,25% 98%,0 50%);
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+.theme-hex-front { background: var(--tile-front); transform: rotateY(0deg) translateZ(1px); }
+.theme-hex-back { background: var(--tile-back); transform: rotateY(180deg) translateZ(1px); }
+@keyframes enj0y-hex-flip {
+  0% { transform: rotateY(0deg) scale(.96); }
+  55% { transform: rotateY(105deg) scale(1.035); }
+  100% { transform: rotateY(180deg) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) { .theme-honeycomb { display: none !important; } }
