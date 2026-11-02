@@ -5,6 +5,7 @@
   const slides = [...carousel.querySelectorAll(".pomas-slide")];
   const count = gallery.querySelector(".pomas-gallery-count");
   const dots = [...gallery.querySelectorAll("[data-go]")];
+  const autoplayToggle = gallery.querySelector("[data-autoplay-toggle]");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let active = 0;
   let timer = null;
@@ -21,12 +22,24 @@
   }
 
   function stop() { if (timer) window.clearInterval(timer); timer = null; }
+  function syncAutoplayControl() {
+    if (!autoplayToggle) return;
+    autoplayToggle.textContent = paused || reducedMotion.matches ? "Play" : "Pause";
+    autoplayToggle.setAttribute("aria-pressed", String(paused));
+    autoplayToggle.setAttribute("aria-label", paused ? "Play automatic slideshow" : "Pause automatic slideshow");
+  }
   function start() {
     stop();
-    if (paused || reducedMotion.matches) return;
+    syncAutoplayControl();
+    if (paused || reducedMotion.matches || document.hidden) return;
     timer = window.setInterval(() => show(active + 1), 4500);
   }
 
+  autoplayToggle?.addEventListener("click", () => {
+    paused = !paused;
+    if (paused) stop(); else start();
+    syncAutoplayControl();
+  });
   gallery.querySelectorAll("[data-direction]").forEach(button => {
     button.addEventListener("click", () => { show(active + Number(button.dataset.direction)); start(); });
   });
@@ -50,4 +63,5 @@
   reducedMotion.addEventListener?.("change", start);
   show(0, "auto");
   start();
+  syncAutoplayControl();
 })();
