@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(() => { const root=document.documentElement; root.classList.add("site-loading"); if(new URLSearchParams(location.search).get("loader-demo")==="1") root.dataset.loaderDemo="true"; try { const saved=localStorage.getItem("enj0y-theme"); if(saved==="light"||saved==="dark") root.dataset.theme=saved; } catch {} })();</script>
 <meta name="description" content="Frequently asked questions about ENJ0Y services, products, learning resources, and contact.">
 <meta name="theme-color" content="#b91c1c">
 <title>FAQ | ENJ0Y</title>
@@ -17,6 +18,7 @@
 <script src="js/tailwind-config.js"></script>
 </head>
 <body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen">
+<div class="site-loader" data-site-loader role="status" aria-live="polite" aria-label="Loading ENJ0Y"><div class="site-loader-inner"><div class="site-loader-mark"><img src="logo.png" alt="" width="54" height="54"></div><p class="site-loader-brand">ENJ0Y</p><p class="site-loader-caption">Software, Design &amp; Learning</p><div class="site-loader-track" aria-hidden="true"><div class="site-loader-progress"></div></div><p class="site-loader-demo-note">Loading preview · 10-second demo</p></div></div>
 <header class="site-header"><div class="site-header-inner">
 <a class="site-brand" href="index.html" aria-label="ENJ0Y home"><img class="site-brand-logo" src="logo.png" alt="" width="42" height="42" decoding="async"><span><span class="site-brand-name">ENJ0Y</span><span class="site-brand-location">Port Harcourt, Nigeria</span></span></a>
 <nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="catalog.html">Catalog</a><a href="learn.html">Learn</a><a href="contact.html">Contact</a><details class="site-nav-more"><summary>More ▾</summary><div class="site-nav-more-panel"><a href="about.html">About</a><a href="cv.html">CV</a><a href="connect.html">Connect</a><a href="notes.html">Notes and Articles</a><a href="faq.html" aria-current="page" class="current">FAQ</a><a href="links.html">Link in Bio</a></div></details></nav>
@@ -42,5 +44,6 @@
 
 <script type="module" src="js/motion.js"></script>
 <script type="module" src="js/theme.js"></script>
+<script src="js/site-loader.js" defer></script>
 </body>
 </html>
