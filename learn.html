@@ -489,17 +489,25 @@
     loadLessonSource(selectedSourcePath);
   }
 
+  let sourceRequest = 0;
   async function loadLessonSource(path) {
+    const requestId = ++sourceRequest;
+    codePanel.setAttribute('aria-busy', 'true');
     codeStatus.textContent = 'Loading ' + path + '…';
     sourceCode.textContent = '';
     try {
       const response = await fetch(path, { cache: 'no-cache' });
       if (!response.ok) throw new Error('HTTP ' + response.status);
-      sourceCode.textContent = await response.text();
+      const text = await response.text();
+      if (requestId !== sourceRequest) return;
+      sourceCode.textContent = text;
       codeStatus.textContent = path + ' · original repository file';
     } catch (error) {
+      if (requestId !== sourceRequest) return;
       codeStatus.textContent = 'Could not load source. Open this lesson through the deployed site or a local web server.';
       sourceCode.textContent = 'Source unavailable: ' + error.message;
+    } finally {
+      if (requestId === sourceRequest) codePanel.removeAttribute('aria-busy');
     }
   }
 
