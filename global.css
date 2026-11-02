@@ -527,6 +527,7 @@ a { text-underline-offset:0.15em; }
 
 /* ENJ0Y branded initial loader */
 .site-loader {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -539,6 +540,7 @@ a { text-underline-offset:0.15em; }
   visibility: visible;
   transition: opacity 420ms ease, visibility 420ms ease;
 }
+html.site-loading .site-loader { display: grid; }
 .site-loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .site-loader-inner { display: grid; justify-items: center; gap: 20px; width: min(100%, 320px); text-align: center; }
 .site-loader-mark {
