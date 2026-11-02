@@ -12,7 +12,7 @@
 
   function show(index, behavior = "smooth") {
     active = (index + slides.length) % slides.length;
-    carousel.scrollTo({ left: slides[active].offsetLeft, behavior: reducedMotion.matches ? "auto" : behavior });
+    carousel.scrollTo({ left: active * carousel.clientWidth, behavior: reducedMotion.matches ? "auto" : behavior });
     count.textContent = `${active + 1} / ${slides.length}`;
     dots.forEach((dot, i) => {
       if (i === active) dot.setAttribute("aria-current", "true");
@@ -33,7 +33,7 @@
   dots.forEach(dot => dot.addEventListener("click", () => { show(Number(dot.dataset.go)); start(); }));
   carousel.addEventListener("scroll", () => {
     const nearest = slides.reduce((best, slide, i) =>
-      Math.abs(slide.offsetLeft - carousel.scrollLeft) < Math.abs(slides[best].offsetLeft - carousel.scrollLeft) ? i : best, 0);
+      Math.abs(i * carousel.clientWidth - carousel.scrollLeft) < Math.abs(best * carousel.clientWidth - carousel.scrollLeft) ? i : best, 0);
     if (nearest !== active) {
       active = nearest;
       count.textContent = `${active + 1} / ${slides.length}`;
