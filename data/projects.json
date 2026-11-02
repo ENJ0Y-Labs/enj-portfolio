@@ -17,5 +17,118 @@
     "repositoryUrl": "https://github.com/ENJ0Y-Labs/poultry-desktop",
     "image": "",
     "publicNotes": "Showcase screenshots must hide sensitive farm, customer, and financial records."
+  },
+  {
+    "id": "retailos",
+    "title": "RetailOS",
+    "status": "In development",
+    "summary": "A retail management platform for products, stock, sales, customers, transactions, and low-stock alerts.",
+    "problem": "Helps small shops keep sales and stock records in one place.",
+    "contribution": "Product development across the web client and Flask API.",
+    "stack": [
+      "Next.js",
+      "React",
+      "Flask",
+      "PostgreSQL"
+    ],
+    "liveUrl": "https://retailos-client-sigma.vercel.app/login",
+    "repositoryUrl": "https://github.com/ENJ0Y-Labs/retailos-client",
+    "relatedRepositories": [
+      "https://github.com/ENJ0Y-Labs/retailos-server"
+    ],
+    "image": "",
+    "publicNotes": "Frontend and backend are maintained in separate repositories."
+  },
+  {
+    "id": "enj0y-shop",
+    "title": "ENJ0Y Shop",
+    "status": "In development",
+    "summary": "A shop application for product browsing, search, cart management, authentication, and order checkout, with a companion Android app.",
+    "problem": "Provides a shared shopping experience across web and Android.",
+    "contribution": "Full-stack web application and Android client development.",
+    "stack": [
+      "React",
+      "Vite",
+      "Flask",
+      "PostgreSQL",
+      "Kotlin",
+      "Jetpack Compose"
+    ],
+    "liveUrl": "",
+    "repositoryUrl": "https://github.com/ENJ0Y-Labs/shop-website",
+    "relatedRepositories": [
+      "https://github.com/ENJ0Y-Labs/shop-mobile"
+    ],
+    "image": "",
+    "publicNotes": "No public web demo link is listed yet."
+  },
+  {
+    "id": "todo-list",
+    "title": "Todo List",
+    "status": "Public demo",
+    "summary": "A task manager for creating, editing, completing, reopening, deleting, searching, filtering, and sorting tasks.",
+    "problem": "Gives users a simple place to organize tasks and due dates.",
+    "contribution": "Built as an HNG 15 Stage 1 project.",
+    "stack": [
+      "React",
+      "Vite",
+      "Flask",
+      "SQLAlchemy",
+      "PostgreSQL"
+    ],
+    "liveUrl": "",
+    "repositoryUrl": "https://github.com/ENJ0Y-Labs/todo-list",
+    "image": "",
+    "publicNotes": "README describes a public no-login demo; no verified demo URL was found in the repository."
+  },
+  {
+    "id": "relic-rush-3d",
+    "title": "Relic Rush 3D",
+    "status": "Published game",
+    "summary": "A 3D endless runner with lane switching, obstacles, relic collection, scoring, and keyboard and touch controls.",
+    "problem": "A browser game designed for desktop and mobile play.",
+    "contribution": "Game project built with Three.js.",
+    "stack": [
+      "Three.js",
+      "JavaScript",
+      "Vite"
+    ],
+    "liveUrl": "https://relic-rush-3d.start.ng/",
+    "repositoryUrl": "https://github.com/ENJ0Y-Labs/endless-runner-game",
+    "image": "",
+    "publicNotes": "Published on Start.ng."
+  },
+  {
+    "id": "fixit",
+    "title": "Fixit · Service Provider App",
+    "status": "In development",
+    "summary": "A frontend project for a service-provider platform.",
+    "problem": "A work-in-progress service-provider experience.",
+    "contribution": "Frontend development and testing.",
+    "stack": [
+      "Frontend",
+      "Testing"
+    ],
+    "liveUrl": "",
+    "repositoryUrl": "https://github.com/ENJ0Y-Labs/fixit-frontend",
+    "image": "",
+    "publicNotes": "No README or public demo was available to verify more detail."
+  },
+  {
+    "id": "hazel-pr",
+    "title": "Hazel PR Company Website",
+    "status": "In development",
+    "summary": "A multi-page corporate website for company information, services, security, clients, and contact details.",
+    "problem": "Organizes company information and service enquiries in one website.",
+    "contribution": "Website development.",
+    "stack": [
+      "React",
+      "Vite",
+      "React Router"
+    ],
+    "liveUrl": "",
+    "repositoryUrl": "https://github.com/ENJ0Y-Labs/hazel-website",
+    "image": "",
+    "publicNotes": "Company descriptions, client names, credentials, and other claims require client approval before publishing."
   }
 ]
