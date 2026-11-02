@@ -54,6 +54,7 @@ function switchTheme(next) {
   requestAnimationFrame(() => overlay.classList.add("is-flipping"));
   const duration = Number.parseFloat(getComputedStyle(overlay).getPropertyValue("--flip-total")) || 1000;
   window.setTimeout(() => {
+    overlay.style.background = next === "dark" ? "#0f131c" : "#fff9fa";
     applyTheme(next);
     overlay.classList.add("is-clearing");
     window.setTimeout(() => {
