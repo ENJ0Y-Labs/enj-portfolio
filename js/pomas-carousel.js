@@ -61,6 +61,7 @@
   gallery.addEventListener("focusout", event => {
     if (!gallery.contains(event.relatedTarget)) { interactionPaused = false; start(); }
   });
+  window.addEventListener("resize", () => show(active, "auto"), { passive: true });
   document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
   reducedMotion.addEventListener?.("change", start);
   show(0, "auto");
