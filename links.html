@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Official links for ENJ0Y: WhatsApp, learning updates, and GitHub.">
+  <script>(() => { const root=document.documentElement; root.classList.add("site-loading"); if(new URLSearchParams(location.search).get("loader-demo")==="1") root.dataset.loaderDemo="true"; try { const saved=localStorage.getItem("enj0y-theme"); if(saved==="light"||saved==="dark") root.dataset.theme=saved; } catch {} })();</script>
+<meta name="description" content="Official links for ENJ0Y: WhatsApp, learning updates, and GitHub.">
   <title>All Links | ENJ0Y</title>
   <link rel="stylesheet" href="global.css">
   <link rel="icon" type="image/png" href="logo.png">
@@ -13,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="link-hub">
+<div class="site-loader" data-site-loader role="status" aria-live="polite" aria-label="Loading ENJ0Y"><div class="site-loader-inner"><div class="site-loader-mark"><img src="logo.png" alt="" width="54" height="54"></div><p class="site-loader-brand">ENJ0Y</p><p class="site-loader-caption">Software, Design &amp; Learning</p><div class="site-loader-track" aria-hidden="true"><div class="site-loader-progress"></div></div><p class="site-loader-demo-note">Loading preview · 10-second demo</p></div></div>
   <main class="link-hub-main">
     <div class="link-hub-brand"><img class="link-hub-logo" src="logo.png" alt="ENJ0Y logo" width="84" height="84" decoding="async"></div>
     <div class="link-top-row"><p class="eyebrow">PERSONAL PORTFOLIO & DIGITAL HUB</p><button id="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme"><span class="material-symbols-outlined">contrast</span></button></div>
@@ -40,5 +42,6 @@
   </main>
 <script type="module" src="js/motion.js"></script>
 <script type="module" src="js/theme.js"></script>
+<script src="js/site-loader.js" defer></script>
 </body>
 </html>
