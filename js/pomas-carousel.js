@@ -9,7 +9,8 @@
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let active = 0;
   let timer = null;
-  let paused = false;
+  let manuallyPaused = false;
+  let interactionPaused = false;
 
   function show(index, behavior = "smooth") {
     active = (index + slides.length) % slides.length;
@@ -24,20 +25,21 @@
   function stop() { if (timer) window.clearInterval(timer); timer = null; }
   function syncAutoplayControl() {
     if (!autoplayToggle) return;
-    autoplayToggle.textContent = paused || reducedMotion.matches ? "Play" : "Pause";
-    autoplayToggle.setAttribute("aria-pressed", String(paused));
-    autoplayToggle.setAttribute("aria-label", paused ? "Play automatic slideshow" : "Pause automatic slideshow");
+    autoplayToggle.hidden = reducedMotion.matches;
+    autoplayToggle.textContent = manuallyPaused ? "Play" : "Pause";
+    autoplayToggle.setAttribute("aria-pressed", String(manuallyPaused));
+    autoplayToggle.setAttribute("aria-label", manuallyPaused ? "Play automatic slideshow" : "Pause automatic slideshow");
   }
   function start() {
     stop();
     syncAutoplayControl();
-    if (paused || reducedMotion.matches || document.hidden) return;
+    if (manuallyPaused || interactionPaused || reducedMotion.matches || document.hidden) return;
     timer = window.setInterval(() => show(active + 1), 4500);
   }
 
   autoplayToggle?.addEventListener("click", () => {
-    paused = !paused;
-    if (paused) stop(); else start();
+    manuallyPaused = !manuallyPaused;
+    if (manuallyPaused) stop(); else start();
     syncAutoplayControl();
   });
   gallery.querySelectorAll("[data-direction]").forEach(button => {
@@ -53,11 +55,11 @@
       dots.forEach((dot, i) => i === active ? dot.setAttribute("aria-current", "true") : dot.removeAttribute("aria-current"));
     }
   }, { passive: true });
-  gallery.addEventListener("mouseenter", () => { paused = true; stop(); });
-  gallery.addEventListener("mouseleave", () => { paused = false; start(); });
-  gallery.addEventListener("focusin", () => { paused = true; stop(); });
+  gallery.addEventListener("mouseenter", () => { interactionPaused = true; stop(); });
+  gallery.addEventListener("mouseleave", () => { interactionPaused = false; start(); });
+  gallery.addEventListener("focusin", () => { interactionPaused = true; stop(); });
   gallery.addEventListener("focusout", event => {
-    if (!gallery.contains(event.relatedTarget)) { paused = false; start(); }
+    if (!gallery.contains(event.relatedTarget)) { interactionPaused = false; start(); }
   });
   document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
   reducedMotion.addEventListener?.("change", start);
