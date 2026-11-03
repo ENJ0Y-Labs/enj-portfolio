@@ -16,6 +16,70 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="js/tailwind-config.js"></script>
+
+<style>
+  /* Learning viewer fullscreen controls */
+  #preview-panel:fullscreen,
+  #code-panel:fullscreen,
+  #preview-panel.is-fullscreen-fallback,
+  #code-panel.is-fullscreen-fallback {
+    box-sizing: border-box;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    max-height: none !important;
+    overflow: auto;
+    margin: 0;
+    padding: 1rem;
+    background: #fff;
+    color: #111827;
+  }
+  #code-panel:fullscreen,
+  #code-panel.is-fullscreen-fallback {
+    background: #0a0e16;
+    color: #f8fafc;
+  }
+  #preview-panel:fullscreen #lesson-frame,
+  #preview-panel.is-fullscreen-fallback #lesson-frame {
+    height: calc(100vh - 4.5rem);
+    min-height: 0 !important;
+  }
+  #code-panel:fullscreen pre,
+  #code-panel.is-fullscreen-fallback pre {
+    max-height: calc(100vh - 7rem);
+    overflow: auto;
+  }
+  .viewer-fullscreen-button {
+    min-height: 40px;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid rgba(127,127,127,.35);
+    border-radius: .6rem;
+    background: #f3f4f6;
+    color: #111827;
+    font: inherit;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .viewer-fullscreen-button:focus-visible {
+    outline: 3px solid #f97316;
+    outline-offset: 2px;
+  }
+  @media (max-width: 480px) {
+    #preview-panel:fullscreen,
+    #code-panel:fullscreen,
+    #preview-panel.is-fullscreen-fallback,
+    #code-panel.is-fullscreen-fallback {
+      padding: .65rem;
+    }
+    #preview-panel:fullscreen #lesson-frame,
+    #preview-panel.is-fullscreen-fallback #lesson-frame {
+      height: calc(100vh - 4rem);
+    }
+  }
+</style>
 </head>
 <body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen">
 <div class="site-loader" data-site-loader role="status" aria-live="polite" aria-label="Loading ENJ0Y"><div class="site-loader-inner"><div class="site-loader-mark"><img src="logo.png" alt="" width="54" height="54"></div><p class="site-loader-brand">ENJ0Y</p><p class="site-loader-caption">Software, Design &amp; Learning</p><div class="site-loader-track" aria-hidden="true"><div class="site-loader-progress"></div></div><p class="site-loader-demo-note">Loading preview · 10-second demo</p></div></div>
@@ -48,9 +112,16 @@
     <button class="viewer-tab px-4 py-2 rounded-lg bg-surface-container text-secondary text-sm font-semibold hidden" id="css-tab" type="button" role="tab" aria-selected="false">CSS file</button>
   </div>
   <div id="preview-panel" class="bg-white">
+    <div class="flex items-center justify-end gap-2 p-2 bg-surface-container-low">
+      <button class="viewer-fullscreen-button" id="preview-fullscreen" type="button" aria-pressed="false" aria-label="Enter live preview fullscreen">Enter fullscreen</button>
+    </div>
     <iframe id="lesson-frame" title="Selected lesson preview" src="html/index.html" sandbox="allow-scripts allow-forms" loading="lazy" referrerpolicy="no-referrer" style="display:block;width:100%;min-height:360px;border:0;background:#fff"></iframe>
   </div>
   <div id="code-panel" class="hidden bg-[#0a0e16] p-4 overflow-auto" style="max-height:520px" role="tabpanel" aria-labelledby="code-tab">
+    <div class="flex items-center justify-between gap-3 mb-3">
+      <span class="text-xs font-semibold text-slate-200">Code editor</span>
+      <button class="viewer-fullscreen-button" id="code-fullscreen" type="button" aria-pressed="false" aria-label="Enter code editor fullscreen">Enter fullscreen</button>
+    </div>
     <p id="code-status" class="text-xs text-secondary mb-3">Loading original lesson source…</p>
     <pre class="text-xs leading-6 text-on-surface whitespace-pre-wrap break-words"><code id="lesson-source"></code></pre>
   </div>
@@ -526,6 +597,73 @@
     const chosen = document.querySelector('.lesson-item[onclick^="selectLesson(' + id + ',"]');
     if (chosen) chosen.classList.add('ring-2','ring-primary');
   }
+
+
+  // Fullscreen each viewer panel independently without rebuilding its iframe or source.
+  const fullscreenButtons = [
+    { panel: previewPanel, button: document.getElementById('preview-fullscreen'), label: 'live preview' },
+    { panel: codePanel, button: document.getElementById('code-fullscreen'), label: 'code editor' }
+  ];
+  let fallbackFullscreenPanel = null;
+
+  function syncFullscreenControls() {
+    fullscreenButtons.forEach(({ panel, button, label }) => {
+      const active = document.fullscreenElement === panel || fallbackFullscreenPanel === panel;
+      button.textContent = active ? 'Exit fullscreen' : 'Enter fullscreen';
+      button.setAttribute('aria-pressed', String(active));
+      button.setAttribute('aria-label', (active ? 'Exit' : 'Enter') + ' ' + label + ' fullscreen');
+    });
+  }
+
+  async function toggleViewerFullscreen(panel) {
+    if (document.fullscreenElement === panel || fallbackFullscreenPanel === panel) {
+      if (document.fullscreenElement === panel && document.exitFullscreen) {
+        try { await document.exitFullscreen(); } catch (error) {
+          panel.classList.add('is-fullscreen-fallback');
+          fallbackFullscreenPanel = panel;
+        }
+      } else {
+        panel.classList.remove('is-fullscreen-fallback');
+        fallbackFullscreenPanel = null;
+      }
+      syncFullscreenControls();
+      return;
+    }
+
+    if (fallbackFullscreenPanel) {
+      fallbackFullscreenPanel.classList.remove('is-fullscreen-fallback');
+      fallbackFullscreenPanel = null;
+    }
+    if (document.fullscreenElement && document.exitFullscreen) {
+      try { await document.exitFullscreen(); } catch {}
+    }
+
+    if (panel.requestFullscreen) {
+      try {
+        await panel.requestFullscreen();
+        syncFullscreenControls();
+        return;
+      } catch (error) {
+        // Some browsers or embedded contexts deny native fullscreen. Use the CSS fallback.
+      }
+    }
+    panel.classList.add('is-fullscreen-fallback');
+    fallbackFullscreenPanel = panel;
+    syncFullscreenControls();
+  }
+
+  fullscreenButtons.forEach(({ panel, button }) => {
+    button.addEventListener('click', () => toggleViewerFullscreen(panel));
+  });
+  document.addEventListener('fullscreenchange', syncFullscreenControls);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && fallbackFullscreenPanel) {
+      fallbackFullscreenPanel.classList.remove('is-fullscreen-fallback');
+      fallbackFullscreenPanel = null;
+      syncFullscreenControls();
+    }
+  });
+  syncFullscreenControls();
 
   previewTab.addEventListener('click', () => setViewerTab('preview'));
   codeTab.addEventListener('click', () => setViewerTab('code'));
