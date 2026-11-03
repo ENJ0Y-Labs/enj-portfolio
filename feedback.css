@@ -1,0 +1,14 @@
+.feedback-section { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:clamp(1.5rem,4vw,3rem); align-items:start; }
+.feedback-intro p { line-height:1.7; }
+.feedback-privacy,.feedback-field small { color:var(--theme-on-surface-variant); font-size:.82rem; line-height:1.55; }
+.feedback-form { display:grid; gap:1rem; padding:clamp(1rem,3vw,1.5rem); border:1px solid var(--theme-outline-variant); border-radius:16px; background:var(--theme-surface-container-low); }
+.feedback-field { display:grid; gap:.45rem; min-width:0; }
+.feedback-field label { font-size:.9rem; font-weight:700; }
+.feedback-field input,.feedback-field select,.feedback-field textarea { width:100%; min-width:0; box-sizing:border-box; padding:.8rem .9rem; border:1px solid var(--theme-outline-variant); border-radius:10px; background:var(--theme-surface); color:var(--theme-on-surface); }
+.feedback-field textarea { resize:vertical; }
+.feedback-optional { color:var(--theme-on-surface-variant); font-weight:400; }
+.feedback-status { min-height:1.5em; margin:0; color:var(--theme-on-surface-variant); font-size:.9rem; overflow-wrap:anywhere; }
+.feedback-status[data-state="error"] { color:var(--theme-error); }
+.feedback-status[data-state="success"] { color:var(--theme-primary); }
+.feedback-honeypot { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
+@media(max-width:720px) { .feedback-section { grid-template-columns:1fr; } }
