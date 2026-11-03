@@ -53,3 +53,22 @@ The catalog lists thumb sleeves and cat collars without invented prices or stock
 6. Capture Pomas screenshots with private farm, customer, and financial details hidden.
 7. Check layout widths at 360px, 768px, and 1280px, and run an accessibility/Lighthouse review.
 8. Verify Netlify is configured to publish this repository root.
+
+## Website feedback and GitHub Issues
+
+The homepage includes a feedback form. Submissions are sent to a Netlify Function, which validates the input and creates an issue in `ENJ0Y-Labs/enj-portfolio` through the GitHub Issues API.
+
+### Netlify setup
+
+1. In the GitHub repository, create a fine-grained personal access token for the `ENJ0Y-Labs/enj-portfolio` repository only.
+2. Grant the token **Issues: Read and write** permission. Do not grant broader permissions.
+3. In Netlify, open **Site configuration → Environment variables** and add `GITHUB_TOKEN` with the token as its value.
+4. Trigger a new deployment so the function receives the environment variable.
+5. Test the live form with a clearly labelled test submission, then close or delete the test issue.
+
+The token must remain in Netlify environment variables. Never add it to frontend JavaScript, HTML, or this repository.
+
+### Important privacy and abuse notes
+
+GitHub issues in this repository may be publicly visible. The optional contact field is included in the issue body, so visitors are warned not to submit sensitive information. The function validates fields and includes a honeypot, but a honeypot is not a complete spam or rate-limiting solution. Add edge-level rate limiting or a challenge provider before promoting the form widely.
+
