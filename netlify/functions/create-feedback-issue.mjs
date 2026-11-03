@@ -6,16 +6,13 @@ const ALLOWED_TYPES = new Set([
   "General Feedback"
 ]);
 
-const json = (statusCode, body) => ({
-  statusCode,
-  headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" },
-  body: JSON.stringify(body)
+const json = (status, body) => new Response(JSON.stringify(body), {
+  status,
+  headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" }
 });
 
 export default async (request) => {
-  if (request.httpMethod !== "POST") {
-    return json(405, { error: "Method not allowed." });
-  }
+  if (request.method !== "POST") return json(405, { error: "Method not allowed." });
 
   const token = process.env.GITHUB_TOKEN;
   if (!token) {
@@ -25,7 +22,7 @@ export default async (request) => {
 
   let input;
   try {
-    input = JSON.parse(request.body || "{}");
+    input = await request.json();
   } catch {
     return json(400, { error: "Invalid submission." });
   }
