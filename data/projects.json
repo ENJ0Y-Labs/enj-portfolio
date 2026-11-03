@@ -19,27 +19,6 @@
     "publicNotes": "Showcase screenshots must hide sensitive farm, customer, and financial records."
   },
   {
-    "id": "retailos",
-    "title": "RetailOS",
-    "status": "In development",
-    "summary": "A retail management platform for products, stock, sales, customers, transactions, and low-stock alerts.",
-    "problem": "Helps small shops keep sales and stock records in one place.",
-    "contribution": "Product development across the web client and Flask API.",
-    "stack": [
-      "Next.js",
-      "React",
-      "Flask",
-      "PostgreSQL"
-    ],
-    "liveUrl": "https://retailos-client-sigma.vercel.app/login",
-    "repositoryUrl": "https://github.com/ENJ0Y-Labs/retailos-client",
-    "relatedRepositories": [
-      "https://github.com/ENJ0Y-Labs/retailos-server"
-    ],
-    "image": "",
-    "publicNotes": "Frontend and backend are maintained in separate repositories."
-  },
-  {
     "id": "enj0y-shop",
     "title": "ENJ0Y Shop",
     "status": "In development",
@@ -113,22 +92,5 @@
     "repositoryUrl": "https://github.com/ENJ0Y-Labs/fixit-frontend",
     "image": "",
     "publicNotes": "No README or public demo was available to verify more detail."
-  },
-  {
-    "id": "hazel-pr",
-    "title": "Hazel PR Company Website",
-    "status": "In development",
-    "summary": "A multi-page corporate website for company information, services, security, clients, and contact details.",
-    "problem": "Organizes company information and service enquiries in one website.",
-    "contribution": "Website development.",
-    "stack": [
-      "React",
-      "Vite",
-      "React Router"
-    ],
-    "liveUrl": "",
-    "repositoryUrl": "https://github.com/ENJ0Y-Labs/hazel-website",
-    "image": "",
-    "publicNotes": "Company descriptions, client names, credentials, and other claims require client approval before publishing."
   }
 ]
