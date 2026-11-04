@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://enj-digitalhub-portfolio.netlify.app/sitemap.xml
+Sitemap: https://enj0y.netlify.app/sitemap.xml
