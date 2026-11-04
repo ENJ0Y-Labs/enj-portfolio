@@ -7,7 +7,7 @@ A static multi-page personal portfolio and digital hub for ENJ. Each primary sec
 - `index.html`: concise homepage and links to the main destinations.
 - `about.html`: background, skills, current learning, and availability.
 - `projects.html`: public project case studies for Pomas, RetailOS, ENJ0Y Shop, Todo List, Relic Rush 3D, Fixit, and Hazel PR. Work in progress is labelled.
-- `services.html`: graphic design and Microsoft Office formatting; web development remains marked as planned.
+- `services.html`: web development, graphic design, and Microsoft Office formatting, all available for enquiries.
 - `catalog.html`: thumb sleeves and cat collar enquiry cards.
 - `learn.html`: the existing HTML/CSS lesson archive, live preview, and source viewer.
 - `cv.html`: request-only CV page; no public CV download.
