@@ -9,8 +9,8 @@ function updateToggle(theme) {
   if (!toggle) return;
   toggle.setAttribute("aria-label", active === "dark" ? "Switch to light theme" : "Switch to dark theme");
   toggle.setAttribute("title", active === "dark" ? "Switch to light theme" : "Switch to dark theme");
-  const icon = toggle.querySelector(".material-symbols-outlined");
-  if (icon) icon.textContent = active === "dark" ? "light_mode" : "dark_mode";
+  const icon = toggle.querySelector(".theme-toggle-icon");
+  if (icon) icon.textContent = active === "dark" ? "☀" : "◐";
 }
 function applyTheme(theme) {
   if (theme === "system") root.removeAttribute("data-theme");
