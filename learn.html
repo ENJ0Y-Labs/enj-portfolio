@@ -79,6 +79,32 @@
       height: calc(100vh - 4rem);
     }
   }
+
+  .lesson-workspace{display:grid;grid-template-columns:minmax(0,1fr) 8px minmax(0,1fr);min-height:520px;background:#0b0f17}
+  .lesson-workspace-panel{min-width:0;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+  .lesson-editor-panel{background:#0b0f17;color:#f8fafc}
+  .lesson-preview-panel{background:#fff;color:#111827}
+  .lesson-panel-heading{min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.65rem .85rem;border-bottom:1px solid #ffffff20}
+  .lesson-panel-heading strong,.lesson-panel-heading span{display:block}
+  .lesson-panel-heading strong{font-size:.85rem}
+  .lesson-panel-heading span{margin-top:.2rem;color:#9ca3af;font-size:.7rem}
+  .lesson-file-tabs{display:flex;gap:.35rem;padding:.5rem .7rem;background:#121925}
+  .lesson-file-tab{padding:.4rem .75rem;border:0;border-radius:4px;background:transparent;color:#aeb8c7;font-size:.75rem;cursor:pointer}
+  .lesson-file-tab.active{background:#293548;color:#fff}
+  #lesson-editor{display:block;width:100%;min-height:420px;flex:1;resize:vertical;padding:1rem;border:0;outline:0;background:#0b0f17;color:#f8fafc;font:13px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:2}
+  .lesson-editor-panel .CodeMirror{height:100%;min-height:440px;font:13px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace}
+  .lesson-workspace-divider{background:#303a49;cursor:col-resize;touch-action:none;position:relative}
+  .lesson-workspace-divider:after{content:"";position:absolute;inset:0 -5px}
+  .lesson-workspace-divider:focus-visible{outline:2px solid #ef4444;outline-offset:-2px}
+  .lesson-workspace.is-vertical{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(260px,1fr) 8px minmax(260px,1fr)}
+  .lesson-workspace.is-vertical .lesson-workspace-divider{cursor:row-resize}
+  #lesson-frame{display:block;width:100%;height:100%;min-height:460px;flex:1;border:0;background:#fff}
+  #code-panel:fullscreen,#preview-panel:fullscreen,#code-panel.is-fullscreen-fallback,#preview-panel.is-fullscreen-fallback{position:fixed;inset:0;z-index:10000;width:100vw;height:100vh;max-height:none;margin:0;padding:0;overflow:auto;background:#0b0f17}
+  #preview-panel:fullscreen,#preview-panel.is-fullscreen-fallback{background:#fff}
+  #code-panel:fullscreen .CodeMirror,#code-panel.is-fullscreen-fallback .CodeMirror{height:calc(100vh - 100px);min-height:0}
+  #preview-panel:fullscreen #lesson-frame,#preview-panel.is-fullscreen-fallback #lesson-frame{height:calc(100vh - 60px);min-height:0}
+  @media(max-width:760px){.lesson-workspace{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(360px,1fr) 8px minmax(360px,1fr)}.lesson-workspace-divider{cursor:row-resize}.lesson-workspace-panel{min-height:360px}.lesson-panel-heading{padding:.55rem}.viewer-fullscreen-button{min-height:38px;padding:.45rem .6rem;font-size:.72rem}}
+  @media(prefers-reduced-motion:reduce){.lesson-workspace *{scroll-behavior:auto!important}}
 </style>
 </head>
 <body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen">
@@ -106,26 +132,38 @@
     </div>
     <button class="px-3 py-2 rounded-lg bg-surface-container text-on-surface text-xs font-semibold" id="copy-source" type="button">Copy source</button>
   </div>
-  <div class="flex gap-2 p-3 bg-surface-container-low border-b border-surface-container-high" role="tablist" aria-label="Lesson view">
-    <button class="viewer-tab px-4 py-2 rounded-lg bg-primary-container text-on-primary-container text-sm font-semibold" id="preview-tab" type="button" role="tab" aria-selected="true">Preview</button>
-    <button class="viewer-tab px-4 py-2 rounded-lg bg-surface-container text-secondary text-sm font-semibold" id="code-tab" type="button" role="tab" aria-selected="false">Code</button>
-    <button class="viewer-tab px-4 py-2 rounded-lg bg-surface-container text-secondary text-sm font-semibold hidden" id="css-tab" type="button" role="tab" aria-selected="false">CSS file</button>
-  </div>
-  <div id="preview-panel" class="bg-white">
-    <div class="flex items-center justify-end gap-2 p-2 bg-surface-container-low">
-      <button class="viewer-fullscreen-button" id="preview-fullscreen" type="button" aria-pressed="false" aria-label="Enter live preview fullscreen">Enter fullscreen</button>
+  <div class="flex flex-wrap items-center justify-between gap-2 p-3 bg-surface-container-low border-b border-surface-container-high">
+    <div class="flex items-center gap-2" role="group" aria-label="Editor actions">
+      <button id="run-code" class="viewer-fullscreen-button" type="button">▶ Run</button>
+      <button id="editor-orientation" class="viewer-fullscreen-button" type="button" aria-pressed="false">Switch orientation</button>
+      <button id="copy-source" class="viewer-fullscreen-button" type="button">Copy code</button>
     </div>
-    <iframe id="lesson-frame" title="Selected lesson preview" src="html/index.html" sandbox="allow-scripts allow-forms" loading="lazy" referrerpolicy="no-referrer" style="display:block;width:100%;min-height:360px;border:0;background:#fff"></iframe>
+    <span id="run-status" class="text-xs text-secondary" role="status" aria-live="polite">Edit the code, then select Run to update the preview.</span>
   </div>
-  <div id="code-panel" class="hidden bg-[#0a0e16] p-4 overflow-auto" style="max-height:520px" role="tabpanel" aria-labelledby="code-tab">
-    <div class="flex items-center justify-between gap-3 mb-3">
-      <span class="text-xs font-semibold text-slate-200">Code editor</span>
-      <button class="viewer-fullscreen-button" id="code-fullscreen" type="button" aria-pressed="false" aria-label="Enter code editor fullscreen">Enter fullscreen</button>
-    </div>
-    <p id="code-status" class="text-xs text-secondary mb-3">Loading original lesson source…</p>
-    <pre class="text-xs leading-6 text-on-surface whitespace-pre-wrap break-words"><code id="lesson-source"></code></pre>
+  <div id="lesson-workspace" class="lesson-workspace">
+    <section id="code-panel" class="lesson-workspace-panel lesson-editor-panel" aria-label="Code editor">
+      <div class="lesson-panel-heading">
+        <div><strong>Code editor</strong><span id="code-status">Loading lesson source…</span></div>
+        <div class="flex items-center gap-2">
+          <button class="viewer-fullscreen-button" id="code-fullscreen" type="button" aria-pressed="false" aria-label="Enter code editor fullscreen">Fullscreen</button>
+        </div>
+      </div>
+      <div class="lesson-file-tabs" role="tablist" aria-label="Source files">
+        <button id="html-file-tab" type="button" class="lesson-file-tab active" role="tab" aria-selected="true">HTML</button>
+        <button id="css-file-tab" type="button" class="lesson-file-tab hidden" role="tab" aria-selected="false">CSS</button>
+      </div>
+      <textarea id="lesson-editor" aria-label="Editable lesson source" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
+    </section>
+    <div id="lesson-workspace-divider" class="lesson-workspace-divider" role="separator" aria-orientation="vertical" aria-label="Resize editor and preview panels" tabindex="0"></div>
+    <section id="preview-panel" class="lesson-workspace-panel lesson-preview-panel" aria-label="Live preview">
+      <div class="lesson-panel-heading">
+        <div><strong>Live preview</strong><span>Run your code to see the result</span></div>
+        <button class="viewer-fullscreen-button" id="preview-fullscreen" type="button" aria-pressed="false" aria-label="Enter live preview fullscreen">Fullscreen</button>
+      </div>
+      <iframe id="lesson-frame" title="Selected lesson live preview" src="html/index.html" sandbox="allow-scripts allow-forms" loading="lazy" referrerpolicy="no-referrer"></iframe>
+    </section>
   </div>
-  <p id="preview-subtext" class="px-4 py-3 text-xs text-secondary">Previewing the original exercise. Switch to Code to read the saved source.</p>
+  <p id="preview-subtext" class="px-4 py-3 text-xs text-secondary">Choose a lesson, edit its source, and run it to see your changes.</p>
 </div>
 <!-- Filter Pills for Lessons -->
 <div class="flex items-center gap-2 overflow-x-auto pb-1" id="lesson-filters">
@@ -530,97 +568,127 @@
     20:{html:'css/grid.html',css:'css/grid.css',notes:'Grid tracks and gaps.'},
     21:{html:'css/grid2.html',css:'css/grid2.css',notes:'More grid layouts and responsive sizing.'},
     22:{html:'css/position.html',notes:'Static, relative, absolute, fixed, and sticky positioning.'},
-    23:{html:'css/navbar.html',notes:'Navigation layout and responsive menu structure.'}
+    23:{html:'css/navbar.html',notes:'Navigation layout and responsive menu.'}
   };
   let selectedLesson = lessonFiles[1];
+  let selectedLessonTitle = '1. Introduction to HTML';
   let selectedSourcePath = selectedLesson.html;
+  let activeSourceType = 'html';
+  let htmlSource = '';
+  let cssSource = '';
+  let fallbackFullscreenPanel = null;
+  const editorTextarea = document.getElementById('lesson-editor');
   const previewPanel = document.getElementById('preview-panel');
   const codePanel = document.getElementById('code-panel');
-  const previewTab = document.getElementById('preview-tab');
-  const codeTab = document.getElementById('code-tab');
-  const cssTab = document.getElementById('css-tab');
-  const sourceCode = document.getElementById('lesson-source');
-  const codeStatus = document.getElementById('code-status');
   const lessonFrame = document.getElementById('lesson-frame');
-
-  function setViewerTab(tab) {
-    const isPreview = tab === 'preview';
-    const isCss = tab === 'css';
-    previewPanel.classList.toggle('hidden', !isPreview);
-    codePanel.classList.toggle('hidden', isPreview);
-    [previewTab, codeTab, cssTab].forEach(button => {
-      const active = button.id === (isPreview ? 'preview-tab' : isCss ? 'css-tab' : 'code-tab');
-      button.classList.toggle('bg-primary-container', active);
-      button.classList.toggle('text-on-primary-container', active);
-      button.classList.toggle('bg-surface-container', !active);
-      button.classList.toggle('text-secondary', !active);
-      button.setAttribute('aria-selected', String(active));
-    });
-    selectedSourcePath = isCss && selectedLesson.css ? selectedLesson.css : selectedLesson.html;
-    loadLessonSource(selectedSourcePath);
-  }
-
+  const codeStatus = document.getElementById('code-status');
+  const runStatus = document.getElementById('run-status');
+  const htmlFileTab = document.getElementById('html-file-tab');
+  const cssFileTab = document.getElementById('css-file-tab');
+  let editor = null;
   let sourceRequest = 0;
-  async function loadLessonSource(path) {
+
+  function setEditorValue(value) {
+    if (editor) editor.setValue(value);
+    else editorTextarea.value = value;
+  }
+  function getEditorValue() {
+    return editor ? editor.getValue() : editorTextarea.value;
+  }
+  function refreshEditor() {
+    if (editor) editor.refresh();
+  }
+  function setActiveSource(type) {
+    activeSourceType = type;
+    const value = type === 'css' ? cssSource : htmlSource;
+    selectedSourcePath = type === 'css' ? selectedLesson.css : selectedLesson.html;
+    setEditorValue(value || '');
+    htmlFileTab.classList.toggle('active', type === 'html');
+    cssFileTab.classList.toggle('active', type === 'css');
+    htmlFileTab.setAttribute('aria-selected', String(type === 'html'));
+    cssFileTab.setAttribute('aria-selected', String(type === 'css'));
+    codeStatus.textContent = selectedSourcePath + ' · editable source';
+    refreshEditor();
+  }
+  async function loadLessonSource(path, type) {
     const requestId = ++sourceRequest;
-    codePanel.setAttribute('aria-busy', 'true');
     codeStatus.textContent = 'Loading ' + path + '…';
-    sourceCode.textContent = '';
     try {
-      const response = await fetch(path, { cache: 'no-cache' });
+      const response = await fetch(path, {cache:'no-cache'});
       if (!response.ok) throw new Error('HTTP ' + response.status);
       const text = await response.text();
       if (requestId !== sourceRequest) return;
-      sourceCode.textContent = text;
-      codeStatus.textContent = path + ' · original repository file';
+      if (type === 'css') cssSource = text;
+      else htmlSource = text;
+      setActiveSource(type);
+      runStatus.textContent = 'Source loaded. Edit the code and select Run.';
     } catch (error) {
       if (requestId !== sourceRequest) return;
-      codeStatus.textContent = 'Could not load source. Open this lesson through the deployed site or a local web server.';
-      sourceCode.textContent = 'Source unavailable: ' + error.message;
-    } finally {
-      if (requestId === sourceRequest) codePanel.removeAttribute('aria-busy');
+      codeStatus.textContent = 'Could not load ' + path;
+      setEditorValue('/* Source unavailable: ' + error.message + ' */');
+      runStatus.textContent = 'Open this page through the deployed site or a local web server.';
     }
   }
-
+  function addBaseUrl(markup, path) {
+    const base = new URL(path, location.href);
+    base.pathname = base.pathname.substring(0, base.pathname.lastIndexOf('/') + 1);
+    const baseTag = '<base href="' + base.href + '">';
+    if (/<head[^>]*>/i.test(markup)) return markup.replace(/<head([^>]*)>/i, '<head$1>' + baseTag);
+    return baseTag + markup;
+  }
+  function runCode() {
+    let markup = activeSourceType === 'html' ? getEditorValue() : htmlSource;
+    const editedCss = activeSourceType === 'css' ? getEditorValue() : cssSource;
+    if (!markup.trim()) {
+      runStatus.textContent = 'There is no HTML to preview yet.';
+      return;
+    }
+    if (selectedLesson.css && editedCss) {
+      const style = '<style data-enj0y-editor-css>\n' + editedCss + '\n</style>';
+      if (/<\/head>/i.test(markup)) markup = markup.replace(/<\/head>/i, style + '</head>');
+      else markup = style + markup;
+    }
+    lessonFrame.srcdoc = addBaseUrl(markup, selectedLesson.html);
+    runStatus.textContent = 'Preview updated · ' + new Date().toLocaleTimeString();
+  }
   async function selectLesson(id, title, desc) {
     const lesson = lessonFiles[id];
     if (!lesson) return;
     selectedLesson = lesson;
-    selectedSourcePath = lesson.html;
+    selectedLessonTitle = title;
     document.getElementById('preview-heading').textContent = title;
     document.getElementById('preview-tag-title').textContent = lesson.html;
     document.getElementById('preview-subtext').textContent = desc + ' ' + lesson.notes;
     lessonFrame.src = lesson.html;
-    cssTab.classList.toggle('hidden', !lesson.css);
-    setViewerTab('preview');
+    htmlSource = '';
+    cssSource = '';
+    cssFileTab.classList.toggle('hidden', !lesson.css);
+    await loadLessonSource(lesson.html, 'html');
+    if (lesson.css) await loadLessonSource(lesson.css, 'css');
+    setActiveSource('html');
     document.querySelectorAll('.lesson-item').forEach(item => item.classList.remove('ring-2','ring-primary'));
     const chosen = document.querySelector('.lesson-item[onclick^="selectLesson(' + id + ',"]');
     if (chosen) chosen.classList.add('ring-2','ring-primary');
   }
-
-
-  // Fullscreen each viewer panel independently without rebuilding its iframe or source.
-  const fullscreenButtons = [
-    { panel: previewPanel, button: document.getElementById('preview-fullscreen'), label: 'live preview' },
-    { panel: codePanel, button: document.getElementById('code-fullscreen'), label: 'code editor' }
-  ];
-  let fallbackFullscreenPanel = null;
+  window.selectLesson = selectLesson;
 
   function syncFullscreenControls() {
-    fullscreenButtons.forEach(({ panel, button, label }) => {
+    [
+      {panel:codePanel,button:document.getElementById('code-fullscreen'),label:'code editor'},
+      {panel:previewPanel,button:document.getElementById('preview-fullscreen'),label:'live preview'}
+    ].forEach(({panel,button,label}) => {
       const active = document.fullscreenElement === panel || fallbackFullscreenPanel === panel;
-      button.textContent = active ? 'Exit fullscreen' : 'Enter fullscreen';
-      button.setAttribute('aria-pressed', String(active));
-      button.setAttribute('aria-label', (active ? 'Exit' : 'Enter') + ' ' + label + ' fullscreen');
+      button.textContent = active ? 'Exit fullscreen' : 'Fullscreen';
+      button.setAttribute('aria-pressed',String(active));
+      button.setAttribute('aria-label',(active?'Exit':'Enter')+' '+label+' fullscreen');
     });
   }
-
   async function toggleViewerFullscreen(panel) {
     if (document.fullscreenElement === panel || fallbackFullscreenPanel === panel) {
       if (document.fullscreenElement === panel && document.exitFullscreen) {
-        try { await document.exitFullscreen(); } catch (error) {
-          panel.classList.add('is-fullscreen-fallback');
-          fallbackFullscreenPanel = panel;
+        try { await document.exitFullscreen(); } catch {
+          panel.classList.remove('is-fullscreen-fallback');
+          fallbackFullscreenPanel = null;
         }
       } else {
         panel.classList.remove('is-fullscreen-fallback');
@@ -629,89 +697,121 @@
       syncFullscreenControls();
       return;
     }
-
     if (fallbackFullscreenPanel) {
       fallbackFullscreenPanel.classList.remove('is-fullscreen-fallback');
       fallbackFullscreenPanel = null;
     }
-    if (document.fullscreenElement && document.exitFullscreen) {
-      try { await document.exitFullscreen(); } catch {}
+    try {
+      if (!panel.requestFullscreen) throw new Error('Fullscreen API unavailable');
+      await panel.requestFullscreen();
+    } catch {
+      panel.classList.add('is-fullscreen-fallback');
+      fallbackFullscreenPanel = panel;
     }
-
-    if (panel.requestFullscreen) {
-      try {
-        await panel.requestFullscreen();
-        syncFullscreenControls();
-        return;
-      } catch (error) {
-        // Some browsers or embedded contexts deny native fullscreen. Use the CSS fallback.
-      }
-    }
-    panel.classList.add('is-fullscreen-fallback');
-    fallbackFullscreenPanel = panel;
     syncFullscreenControls();
+    refreshEditor();
   }
-
-  fullscreenButtons.forEach(({ panel, button }) => {
-    button.addEventListener('click', () => toggleViewerFullscreen(panel));
-  });
-  document.addEventListener('fullscreenchange', syncFullscreenControls);
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && fallbackFullscreenPanel) {
+  document.getElementById('code-fullscreen').addEventListener('click',()=>toggleViewerFullscreen(codePanel));
+  document.getElementById('preview-fullscreen').addEventListener('click',()=>toggleViewerFullscreen(previewPanel));
+  document.addEventListener('fullscreenchange',()=>{syncFullscreenControls();refreshEditor();});
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape' && fallbackFullscreenPanel) {
       fallbackFullscreenPanel.classList.remove('is-fullscreen-fallback');
-      fallbackFullscreenPanel = null;
+      fallbackFullscreenPanel=null;
       syncFullscreenControls();
     }
+    if((event.ctrlKey||event.metaKey)&&event.key==='Enter') { event.preventDefault(); runCode(); }
   });
-  syncFullscreenControls();
 
-  previewTab.addEventListener('click', () => setViewerTab('preview'));
-  codeTab.addEventListener('click', () => setViewerTab('code'));
-  cssTab.addEventListener('click', () => setViewerTab('css'));
-  document.getElementById('copy-source').addEventListener('click', async () => {
-    if (!sourceCode.textContent.trim()) {
-      await loadLessonSource(selectedSourcePath);
-    }
-    try {
-      await navigator.clipboard.writeText(sourceCode.textContent);
-      document.getElementById('copy-source').textContent = 'Copied';
-      setTimeout(() => document.getElementById('copy-source').textContent = 'Copy source', 1400);
-    } catch {
-      codeStatus.textContent = 'Copy was blocked by the browser. Select the source text and copy it manually.';
+  htmlFileTab.addEventListener('click',()=>setActiveSource('html'));
+  cssFileTab.addEventListener('click',()=>{if(selectedLesson.css)setActiveSource('css');});
+  document.getElementById('run-code').addEventListener('click',runCode);
+  document.getElementById('copy-source').addEventListener('click',async()=>{
+    try { await navigator.clipboard.writeText(getEditorValue()); runStatus.textContent='Code copied to clipboard.'; }
+    catch { runStatus.textContent='Clipboard access was blocked. Select the code and copy it manually.'; }
+  });
+  document.getElementById('editor-orientation').addEventListener('click',event=>{
+    const workspace=document.getElementById('lesson-workspace');
+    const vertical=workspace.classList.toggle('is-vertical');
+    event.currentTarget.setAttribute('aria-pressed',String(vertical));
+    event.currentTarget.textContent=vertical?'Use side-by-side layout':'Switch orientation';
+  });
+  const divider=document.getElementById('lesson-workspace-divider');
+  let resizing=false;
+  divider.addEventListener('pointerdown',event=>{resizing=true;divider.setPointerCapture(event.pointerId);});
+  divider.addEventListener('pointermove',event=>{
+    if(!resizing)return;
+    const workspace=document.getElementById('lesson-workspace');
+    const rect=workspace.getBoundingClientRect();
+    if(workspace.classList.contains('is-vertical')) {
+      const ratio=Math.max(.25,Math.min(.75,(event.clientY-rect.top)/rect.height));
+      workspace.style.gridTemplateRows=ratio+'fr 8px '+(1-ratio)+'fr';
+    } else {
+      const ratio=Math.max(.25,Math.min(.75,(event.clientX-rect.left)/rect.width));
+      workspace.style.gridTemplateColumns=ratio+'fr 8px '+(1-ratio)+'fr';
     }
   });
-  loadLessonSource(selectedSourcePath);
-
-  function filterLessons(type, btn) {
-    const buttons = document.querySelectorAll('#lesson-filters button');
-    buttons.forEach(b => {
-      b.classList.remove('bg-primary-container', 'text-on-primary-container');
-      b.classList.add('bg-surface-container', 'text-secondary');
+  divider.addEventListener('pointerup',()=>{resizing=false;});
+  divider.addEventListener('pointercancel',()=>{resizing=false;});
+  divider.addEventListener('keydown',event=>{
+    if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight'&&event.key!=='ArrowUp'&&event.key!=='ArrowDown')return;
+    event.preventDefault();
+    const workspace=document.getElementById('lesson-workspace');
+    const vertical=workspace.classList.contains('is-vertical');
+    const key=vertical?'gridTemplateRows':'gridTemplateColumns';
+    const delta=(event.key==='ArrowRight'||event.key==='ArrowDown')?5:-5;
+    const current=workspace.style[key]||'1fr 8px 1fr';
+    const parts=current.split(' ');
+    const first=parseFloat(parts[0])||1;
+    const second=parseFloat(parts[2])||1;
+    const next=Math.max(.25,Math.min(.75,first+delta/100));
+    workspace.style[key]=next+'fr 8px '+(1-next)+'fr';
+  });
+  function filterLessons(type,btn) {
+    document.querySelectorAll('#lesson-filters button').forEach(button=>{
+      button.classList.remove('bg-primary-container','text-on-primary-container');
+      button.classList.add('bg-surface-container','text-secondary');
     });
-    btn.classList.remove('bg-surface-container', 'text-secondary');
-    btn.classList.add('bg-primary-container', 'text-on-primary-container');
-
-    const items = document.querySelectorAll('.lesson-item');
-    items.forEach(item => {
-      if (type === 'all') {
-        item.style.display = 'flex';
-      } else if (item.classList.contains(type)) {
-        item.style.display = 'flex';
-      } else {
-        item.style.display = 'none';
-      }
+    btn.classList.remove('bg-surface-container','text-secondary');
+    btn.classList.add('bg-primary-container','text-on-primary-container');
+    document.querySelectorAll('.lesson-item').forEach(item=>{
+      item.style.display=type==='all'||item.classList.contains(type)?'flex':'none';
     });
   }
-
+  window.filterLessons=filterLessons;
   function selectTopic(clickedBtn) {
-    const chips = document.querySelectorAll('.topic-chip');
-    chips.forEach(c => {
-      c.classList.remove('bg-primary-container', 'text-on-primary-container');
-      c.classList.add('bg-surface-container', 'text-secondary');
+    document.querySelectorAll('.topic-chip').forEach(chip=>{
+      chip.classList.remove('bg-primary-container','text-on-primary-container');
+      chip.classList.add('bg-surface-container','text-secondary');
     });
-    clickedBtn.classList.remove('bg-surface-container', 'text-secondary');
-    clickedBtn.classList.add('bg-primary-container', 'text-on-primary-container');
+    clickedBtn.classList.remove('bg-surface-container','text-secondary');
+    clickedBtn.classList.add('bg-primary-container','text-on-primary-container');
   }
+  window.selectTopic=selectTopic;
+
+  const codeMirrorCss=document.createElement('link');
+  codeMirrorCss.rel='stylesheet';
+  codeMirrorCss.href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css';
+  document.head.appendChild(codeMirrorCss);
+  const codeMirrorTheme=document.createElement('link');
+  codeMirrorTheme.rel='stylesheet';
+  codeMirrorTheme.href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css';
+  document.head.appendChild(codeMirrorTheme);
+  const codeMirrorScript=document.createElement('script');
+  codeMirrorScript.src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js';
+  codeMirrorScript.onload=()=>{
+    ['xml/xml.js','javascript/javascript.js','css/css.js','htmlmixed/htmlmixed.js'].reduce((promise,path)=>promise.then(()=>new Promise((resolve,reject)=>{
+      const script=document.createElement('script');script.src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/'+path;script.onload=resolve;script.onerror=reject;document.head.appendChild(script);
+    })),Promise.resolve()).then(()=>{
+      editor=CodeMirror.fromTextArea(editorTextarea,{lineNumbers:true,mode:'htmlmixed',theme:'material-darker',lineWrapping:false,indentUnit:2,tabSize:2,extraKeys:{'Ctrl-Enter':runCode,'Cmd-Enter':runCode}});
+      editor.setSize('100%','100%');
+      editor.on('change',()=>{runStatus.textContent='Unsaved edits · select Run to refresh the preview.';});
+      refreshEditor();
+    }).catch(()=>{runStatus.textContent='Syntax highlighting could not load. The plain text editor is still available.';});
+  };
+  codeMirrorScript.onerror=()=>{runStatus.textContent='Syntax highlighting unavailable. The plain text editor is still available.';};
+  document.head.appendChild(codeMirrorScript);
+  loadLessonSource(selectedLesson.html,'html');
 </script>
 <script type="module" src="js/motion.js"></script>
 <script type="module" src="js/theme.js"></script>
