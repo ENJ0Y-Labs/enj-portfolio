@@ -798,3 +798,18 @@ html[data-theme="dark"] {
 .project-case-study-details { display: grid; gap: .45rem; margin: .35rem 0 .75rem; padding: .9rem 1rem; border-left: 2px solid var(--theme-primary); background: var(--theme-surface-container); }
 .project-case-study-details p { margin: 0; font-size: .88rem; line-height: 1.65; color: var(--theme-on-surface-variant); }
 .project-case-study-details strong { color: var(--theme-on-surface); }
+
+
+/* ENJ0Y signature: subtle architectural grid across the page canvas.
+   Kept on the body background so cards and content retain their existing surfaces. */
+body {
+  background-color: var(--theme-surface);
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--theme-on-surface) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--theme-on-surface) 4%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center top;
+}
+@media (max-width: 640px) {
+  body { background-size: 32px 32px; }
+}
