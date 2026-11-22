@@ -792,3 +792,7 @@ html[data-theme="dark"] {
 .gallery-lightbox-nav { width: 42px; height: 48px; border: 1px solid #ffffff55; border-radius: 6px; background: #222; color: white; font-size: 1.8rem; cursor: pointer; }
 .gallery-lightbox button:focus-visible { outline: 3px solid #FF9A3D; outline-offset: 3px; }
 @media (max-width: 600px) { .gallery-lightbox-inner { gap: .3rem; padding: 3.5rem .4rem .8rem; } .gallery-lightbox-nav { width: 34px; } }
+
+.project-case-study-details { display: grid; gap: .45rem; margin: .35rem 0 .75rem; padding: .9rem 1rem; border-left: 2px solid var(--theme-primary); background: var(--theme-surface-container); }
+.project-case-study-details p { margin: 0; font-size: .88rem; line-height: 1.65; color: var(--theme-on-surface-variant); }
+.project-case-study-details strong { color: var(--theme-on-surface); }
