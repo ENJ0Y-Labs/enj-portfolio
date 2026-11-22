@@ -24,8 +24,8 @@ function buildHoneycomb(from, to) {
   const overlay = document.createElement("div");
   overlay.className = "theme-honeycomb";
   overlay.setAttribute("aria-hidden", "true");
-  overlay.style.setProperty("--tile-front", from === "dark" ? "#0f131c" : "#fff9fa");
-  overlay.style.setProperty("--tile-back", to === "dark" ? "#0f131c" : "#fff9fa");
+  overlay.style.setProperty("--tile-front", from === "dark" ? "#0F0F10" : "#FBFAF8");
+  overlay.style.setProperty("--tile-back", to === "dark" ? "#0F0F10" : "#FBFAF8");
   const w = 76, h = 68;
   const columns = Math.ceil(innerWidth / (w * .75)) + 2;
   const rows = Math.ceil(innerHeight / h) + 2;
@@ -54,7 +54,7 @@ function switchTheme(next) {
   requestAnimationFrame(() => overlay.classList.add("is-flipping"));
   const duration = Number.parseFloat(getComputedStyle(overlay).getPropertyValue("--flip-total")) || 1000;
   window.setTimeout(() => {
-    overlay.style.background = next === "dark" ? "#0f131c" : "#fff9fa";
+    overlay.style.background = next === "dark" ? "#0F0F10" : "#FBFAF8";
     applyTheme(next);
     overlay.classList.add("is-clearing");
     window.setTimeout(() => {
