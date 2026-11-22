@@ -78,19 +78,65 @@
     "publicNotes": "Published on Start.ng."
   },
   {
-    "id": "fixit",
-    "title": "Fixit · Service Provider App",
+    "id": "retailos",
+    "title": "RetailOS",
     "status": "In development",
-    "summary": "A frontend project for a service-provider platform.",
-    "problem": "A work-in-progress service-provider experience.",
-    "contribution": "Frontend development and testing.",
+    "summary": "A retail operations platform covering product management, inventory, point-of-sale workflows, customers, low-stock alerts, and platform administration.",
+    "problem": "Helps small retailers manage day-to-day store operations and keep sales and stock records organized.",
+    "contribution": "Product and software development across the client, server, and administration applications.",
     "stack": [
-      "Frontend",
-      "Testing"
+      "Next.js",
+      "Flask",
+      "PostgreSQL"
     ],
     "liveUrl": "",
-    "repositoryUrl": "https://github.com/ENJ0Y-Labs/fixit-frontend",
+    "repositoryUrl": "https://github.com/ENJ0Y-Labs/retailos-client",
+    "relatedRepositories": [
+      "https://github.com/ENJ0Y-Labs/retailos-server",
+      "https://github.com/ENJ0Y-Labs/retailos-admin"
+    ],
     "image": "",
-    "publicNotes": "No README or public demo was available to verify more detail."
+    "publicNotes": "The project is still in development; paid subscription activation is not yet configured."
+  },
+  {
+    "id": "apimon",
+    "title": "APIMON",
+    "status": "In development · production deployment unverified",
+    "summary": "A cloud-based uptime and API monitoring platform that schedules independent checks, records availability and response times, and tracks incidents.",
+    "problem": "Helps operators detect website and API failures and review service reliability over time.",
+    "contribution": "Product and software development across the React dashboard, Flask API direction, and Cloudflare Worker monitoring engine.",
+    "stack": [
+      "React",
+      "Vite",
+      "Flask",
+      "Cloudflare Workers",
+      "D1",
+      "PostgreSQL"
+    ],
+    "liveUrl": "",
+    "repositoryUrl": "https://github.com/ENJ0Y-Labs/uptime-monitor",
+    "image": "",
+    "publicNotes": "Phase 6 production hardening is implemented, but production deployment and its remaining acceptance criteria are not verified."
+  },
+  {
+    "id": "pomas-website",
+    "title": "Pomas Website",
+    "status": "In development",
+    "summary": "The public product website for Pomas, including product information, release downloads, and a GitHub-based feedback flow.",
+    "problem": "Gives poultry businesses a public place to understand Pomas and access verified application releases.",
+    "contribution": "Product website development and integration with the public Pomas release repository.",
+    "stack": [
+      "React",
+      "Vite",
+      "JavaScript",
+      "CSS"
+    ],
+    "liveUrl": "",
+    "repositoryUrl": "https://github.com/ENJ0Y-Labs/pomas-website",
+    "relatedRepositories": [
+      "https://github.com/ENJ0Y-Labs/poultry-desktop"
+    ],
+    "image": "",
+    "publicNotes": "Release metadata and installer links are read from the Pomas desktop repository."
   }
 ]
