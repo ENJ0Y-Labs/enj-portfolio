@@ -51,7 +51,9 @@
   --theme-surface-variant: #31353e;
 }
 html { scroll-padding-top: 5rem; }
-body { min-width: 320px; background: var(--theme-surface); color: var(--theme-on-surface); }
+body { min-width: 320px; background: var(--theme-surface); color: var(--theme-on-surface); font-family: "Geist", system-ui, sans-serif; }
+.home-page { display: flex; flex-direction: column; min-height: 100vh; }
+.home-page > .page-shell { flex: 1; }
 button, input, select, textarea { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 3px solid var(--theme-primary-container); outline-offset: 3px; }
@@ -515,8 +517,8 @@ a { text-underline-offset:0.15em; }
 #code-panel[aria-busy="true"] #lesson-source { opacity: .4; transition: opacity 160ms ease; }
 
 /* Theme toggle: the icon turns when pressed. */
-.theme-toggle .material-symbols-outlined { transition: transform 260ms ease; }
-.theme-toggle:active .material-symbols-outlined { transform: rotate(180deg); }
+.theme-toggle-icon { display: inline-block; font-size: 1.45rem; line-height: 1; transition: transform 260ms ease; }
+.theme-toggle:active .theme-toggle-icon { transform: rotate(180deg); }
 
 /* Touch screens have no real hover: don't leave cards or buttons stuck raised. */
 @media (hover: none) {
@@ -687,7 +689,7 @@ html[data-theme="dark"] {
 .site-nav a.current, .mobile-nav-panel a.current { color: var(--theme-primary); }
 .page-title, .page-section-title, .home-hero h1, .bento-card h3, .capability-item h3 { font-family: "Plus Jakarta Sans", sans-serif; letter-spacing: -.045em; }
 .page-lead { max-width: 62ch; }
-.page-button { border-radius: 7px; min-height: 48px; padding: .8rem 1.2rem; background: var(--theme-primary-container); border-color: var(--theme-primary-container); color: #171717; }
+.page-button { border-radius: 7px; min-height: 48px; padding: .8rem 1.2rem; background: var(--theme-primary-container); border-color: var(--theme-primary-container); color: #fff; }
 .page-button.secondary { background: transparent; }
 .page-button:hover { box-shadow: 0 8px 24px #dc262628; }
 .home-hero-editorial { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, .95fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); padding: clamp(1.5rem, 5vw, 4.5rem) 0; border: 0; border-radius: 0; background: transparent; }
