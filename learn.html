@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>(() => { const root=document.documentElement; root.classList.add("site-loading"); if(new URLSearchParams(location.search).get("loader-demo")==="1") root.dataset.loaderDemo="true"; try { const saved=localStorage.getItem("enj0y-theme"); if(saved==="light"||saved==="dark") root.dataset.theme=saved; } catch {} })();</script>
 <meta name="description" content="A practical HTML and CSS lesson archive for beginners, secondary school students, and teachers.">
-<meta name="theme-color" content="#FF7A00">
+<meta name="theme-color" content="#DC2626">
 <title>Learn HTML & CSS | ENJ0Y</title>
 <link rel="stylesheet" href="global.css">
 <link rel="icon" type="image/png" href="logo.png">
@@ -64,7 +64,7 @@
     cursor: pointer;
   }
   .viewer-fullscreen-button:focus-visible {
-    outline: 3px solid #f97316;
+    outline: 3px solid #dc2626;
     outline-offset: 2px;
   }
   @media (max-width: 480px) {
@@ -608,6 +608,7 @@
     htmlFileTab.setAttribute('aria-selected', String(type === 'html'));
     cssFileTab.setAttribute('aria-selected', String(type === 'css'));
     codeStatus.textContent = selectedSourcePath + ' · editable source';
+    if (editor) editor.setOption('mode', type === 'css' ? 'css' : 'htmlmixed');
     refreshEditor();
   }
   async function loadLessonSource(path, type) {
