@@ -693,7 +693,7 @@ html[data-theme="dark"] {
 .home-hero-editorial { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, .95fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); padding: clamp(1.5rem, 5vw, 4.5rem) 0; border: 0; border-radius: 0; background: transparent; }
 .home-hero-copy { max-width: 650px; }
 .home-hero-editorial .page-eyebrow, .section-heading-row .page-eyebrow { letter-spacing: .16em; }
-.home-hero-editorial .page-title { max-width: 10ch; font-size: clamp(3.25rem, 6.5vw, 6.4rem); line-height: .99; letter-spacing: -.075em; margin: .6rem 0 1.1rem; }
+.home-hero-editorial .page-title { max-width: 10ch; font-size: clamp(2.8rem, 5.2vw, 4.8rem); line-height: .99; letter-spacing: -.075em; margin: .6rem 0 1.1rem; }
 .home-hero-editorial .role-line { color: var(--theme-on-surface); font-size: clamp(.95rem, 1.4vw, 1.1rem); }
 .home-hero-editorial .page-lead { font-size: clamp(1rem, 1.5vw, 1.16rem); line-height: 1.75; }
 .home-hero-editorial .page-buttons { align-items: center; gap: .65rem; margin-top: 1.7rem; }
@@ -745,14 +745,14 @@ html[data-theme="dark"] {
 .page-footer { margin-top: 5rem; }
 @media (max-width: 900px) {
   .home-hero-editorial { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .home-hero-editorial .page-title { font-size: clamp(3rem, 7vw, 4.8rem); }
+  .home-hero-editorial .page-title { font-size: clamp(2.7rem, 5.5vw, 4rem); }
   .capability-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .capability-item:nth-child(3) { border-left: 0; padding-left: 0; }
 }
 @media (max-width: 680px) {
   .page-shell { width: min(100% - 1.25rem, 1180px); padding-top: 1.5rem; }
   .home-hero-editorial { grid-template-columns: 1fr; padding: 1.2rem 0 1rem; }
-  .home-hero-editorial .page-title { max-width: 9ch; font-size: clamp(3.2rem, 15vw, 5.2rem); }
+  .home-hero-editorial .page-title { max-width: 9ch; font-size: clamp(2.7rem, 11vw, 4.2rem); }
   .home-hero-visual { aspect-ratio: 1.15 / 1; }
   .home-hero-editorial .page-buttons { align-items: stretch; flex-direction: column; }
   .home-hero-editorial .page-buttons .page-button { width: 100%; }
@@ -776,7 +776,7 @@ html[data-theme="dark"] {
 @media (max-width: 390px) {
   .home-bento-grid { grid-template-columns: 1fr; }
   .bento-featured, .bento-about, .bento-stack, .bento-learning, .bento-projects, .bento-services { grid-column: 1 / -1; }
-  .home-hero-editorial .page-title { font-size: clamp(3rem, 14vw, 4rem); }
+  .home-hero-editorial .page-title { font-size: clamp(2.5rem, 10vw, 3.4rem); }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-hero-visual img, .bento-image-link img, .pomas-slide img { transition: none; }
